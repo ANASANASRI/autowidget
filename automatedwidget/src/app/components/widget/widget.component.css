@@ -1,12 +1,19 @@
 
 .body {
-  width: 100%;
-  height: 100%;
-  background-color: rgba(37, 37, 37, 0.325);
-  } 
+  background-color: rgba(37, 37, 37, 0.768);
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+} 
+
   
 .containerwidget {
   width: 900px;
+  min-height: 750px;
+  height: auto;
   max-width: 100%;
   margin: 0 auto; /* Center the container horizontally */
   flex-direction: column; /* Arrange child elements vertically */
@@ -14,11 +21,12 @@
   z-index: 3;
   /* background-color: rgb(241, 243, 241); */
   background-color: #FCFCFC;
-  height: auto;
+  /* height: auto; */
   padding: 15px 15px 15px 15px;
-  margin-top: 3%;
-  margin-bottom: 3%;
+  margin-top: 2.5%;
   position: relative;
+
+  padding: 20px;
 }
 
 .spacer {
@@ -33,4 +41,10 @@
   right: 0;
   top: 0;
   margin-right: 8px;
+}
+
+.shadow-2xl {
+  --tw-shadow: 0 25px 1000px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
