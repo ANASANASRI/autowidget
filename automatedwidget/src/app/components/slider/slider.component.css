@@ -1,0 +1,7 @@
+.container {
+    align-items: center;
+    overflow:hidden;
+}     
+.slideContainer::-webkit-scrollbar {
+    display: none;
+}

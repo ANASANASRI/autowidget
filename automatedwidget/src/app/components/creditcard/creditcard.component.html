@@ -1,0 +1,151 @@
+<!-- <app-logoscroller></app-logoscroller> -->
+<!-- <div class="border border-emerald-500 rounded-3xl p-1 hover:border-emerald-300"> -->
+<div class="container">
+
+        
+    <!-- creditcard Delantera -->
+    <section class="creditcard" id="creditcard" #card (click)=" rotate(card) ">
+        
+        <div class="absolute inset-0 bg-gradient-to-r from-emerald-400 to-emerald-100 shadow-lg transform -skew-y-6 sm:skew-y-0 sm:-rotate-3 sm:rounded-3xl z-0"></div>
+        
+        <div class="delantera">
+            <div class="logo-marca" id="logo-marca"></div>
+
+            <img src="/assets/img/chip-tarjeta.png" class="chip" />
+
+            <div class="datos">
+                <div class="grupo">
+                    <p  *ngIf="cardNumber !== '' "
+                        class="numero" 
+                        id="numero">{{ cardNumber  }}
+                    </p>
+                    <p  *ngIf="cardNumber == '' "
+                        class="numero" 
+                        id="numero"> #### #### #### ####
+                    </p>
+                </div>
+                <div class="flexbox">
+                    <div class="grupo">
+                        <p class="label" >Titulaire de la carte                        </p>
+                        <p *ngIf=" cardName !== '' "
+                           class="name"  
+                           id="name"> {{ cardName | uppercase  }} 
+                        </p>
+                        <p *ngIf=" cardName == '' "
+                           class="name"  
+                           id="name"> Anas anasri 
+                        </p>
+                    </div>
+                    <div class="grupo" id="expiracion">
+                        <p class="label">Date d'expiration</p>
+                        <p class="expiracion"><span id="mes"> {{ month }}</span>/<span id="year">{{ year }} </span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- creditcard trasera -->
+        <div class="trasera">
+            <div class="barra-magnetica"></div>
+            <div class="datos">
+                <div class="grupo" id="ccv">
+                    <p class="label" id="cvvLabel"> CVV </p>
+                    <p class="ccvP text-end" id="codigo"> {{ cvv }} </p>
+                </div>
+            </div>
+            <div class="logo-marca back" id="logo-marca-trasera"></div>
+        </div>
+    </section>
+
+
+    <!-- Boton abrir formuler -->
+<div class="container-btn" #button (click)="toggleForm()">
+    <button class="btn-abrir-formuler text-white" [class.active]="isFormActive" id="btn-abrir-formuler">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+        </svg>
+    </button>
+</div>
+
+    
+    <!-- Formuler -->
+    <form class="formuler-creditcard active" #formuler="ngForm" id="formuler-creditcard">
+        
+        <div class="relative bg-white shadow-md sm:rounded-3xl sm:p-10">
+        <div class="grupo">
+            <label for="inputNumero">Numéro de carte</label>
+            <input  type="text" 
+                    id="inputNumero"
+                    name="cardNumber"
+                    [(ngModel)]="cardNumber"
+                    maxlength="16"
+                    minlength="4"
+                    pattern="^\d*$"
+                    autocomplete="off" 
+                    (keyup)="complete( formuler )"
+                    required>
+        </div>
+        <div class="grupo">
+            <label for="inputname">Titulaire de la carte </label>
+            <input type="text" 
+                   id="inputname" 
+                   name="cardName"
+                   pattern="/!?^[a-zA-Z\d][a-zA-Z]*$/igm"
+                   [(ngModel)]= " cardName "
+                   maxlength="24"
+                   autocomplete="off"
+                   required>
+        </div>
+
+        <div class="flexbox">
+            <div class="grupo expira">
+                <label for="selectMes">Date d'expiration</label>
+                <div class="flexbox">
+                    <div class="grupo-select">
+                        <select name="mes" 
+                                id="selectMes"
+                                [(ngModel)]=" month ">
+                            <option selected disabled>
+                                {{  "Month" || month }}
+                            </option>
+                            <option *ngFor="let mes of mesesYear"
+                                    id="mes"> {{ mes }} 
+                            </option>
+                        </select>
+                        <i class="fas fa-angle-down"></i>
+                    </div>
+                    <div class="grupo-select">
+                        <select name="year" 
+                                id="selectYear"
+                                [(ngModel)]=" year " 
+                                required>
+                            <option disabled selected>{{ "Year" || year }}</option>
+                            <option *ngFor="let year of years"> {{ year }}</option>
+                        </select>
+                        <i class="fas fa-angle-down"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="grupo ccv">
+                <label for="inputCCV">CVV</label>
+                <input type="text" 
+                       id="inputCCV"
+                       name="inputCCV"
+                       [(ngModel)]=" cvv "
+                       placeholder=" "
+                       maxlength="3" 
+                       autocomplete="off"
+                       (click)="rellenarCVV()"
+                       required>
+            </div>
+        </div>
+        <div class="d-grid gap-2">
+            <button [disabled]="formuler.invalid"
+                    type="button" 
+                    class="btn btn-success row">Send</button>
+        </div>
+        </div>
+    </form>
+
+</div>
+<!-- </div> -->

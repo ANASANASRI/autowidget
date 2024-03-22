@@ -1,0 +1,63 @@
+<div class="container">
+    
+    <div class="flex w-full justify-between items-center">
+<!-- ///////////////////////////////// -->
+
+        <button *ngIf="this.slideConfig.showLeftRightArrow" (click)="prev()" class="w-8 sm:w-10 sm:h-10 h-8 rounded-lg flex bg-green-50 hover:bg-green-300 text-slate-800 shadow-inner">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-5 sm:w-6 h-5 sm:h-6 m-auto">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
+            </svg>
+        </button>
+        
+<!-- ///////////////////////////////// -->
+        
+        <div #slideContainer class="w-full overflow-x-auto" style="overflow-y: hidden; scrollbar-width: none;">
+            <ul #slider class="flex transition-all duration-300" [style.width.px]="sliderWidth" [style.marginLeft.px]="sliderMarginLeft">
+                <li class="cursor-pointer" [style.width.px]="slideWidth" *ngFor="let option of getItems(); 
+                let i = index" 
+                (click)="handleOptionClick(i)"
+                [ngClass]="{ 'bg-emerald-50  rounded-2xl': selectedItemIndex === i, 'transparent': selectedItemIndex !== i }"
+                [style.border]="selectedItemIndex === i ? 'none' : 'none'"
+                [class.mx-0]="selectedItemIndex === i">
+                    <ng-content *ngTemplateOutlet="template || defaultTemplate; context:{$implicit:option}"></ng-content>
+                </li>
+            </ul>
+        </div>
+
+
+<!-- ///////////////////////////////// -->
+
+        <button *ngIf="this.slideConfig.showLeftRightArrow" (click)="next()" class="w-8 sm:w-10 sm:h-10 h-8 rounded-lg flex bg-green-50 hover:bg-green-300 text-slate-800 shadow-inner">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="w-5 sm:w-6 h-5 sm:h-6 m-auto">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+            </svg>
+        </button>
+      
+    </div>
+</div>
+
+    <!-- ///////////////////////////////// -->
+
+
+<!-- Dots navigation -->
+<div *ngIf=" this.slideConfig.showDots && this.dots.length>1 " class="mt-10 flex justify-center">
+    <ul class="flex gap-2">
+      <li (click)="move(i+1)" *ngFor="let dot of dots;let i=index">
+        <span class="w-4 h-4 rounded-full bg-emerald-600 {{i+1===this.activeSlideID?'':'bg-opacity-20'}} flex"></span>
+      </li>
+    </ul>
+</div>
+
+<!-- Default template -->
+<ng-template #defaultTemplate let-item let-width="slideWidth" >
+    <div
+        class="mx-1 rounded-lg px-lg-0 py-3  text-slate-800 font-semibold text-center border-2 border-opacity-10 hover:shadow-lg hover:border-emerald-400 flex items-center justify-center">
+        <img src="{{ item.url }}" class="w-14 h-14 mr-2" alt="Icon"> <!-- Adjust width and height as needed -->
+        <span>{{ item.name }}</span>
+    </div>
+</ng-template>
+
+
+    <!-- ///////////////////////////////// -->
