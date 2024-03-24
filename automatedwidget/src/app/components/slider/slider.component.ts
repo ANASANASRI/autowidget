@@ -71,31 +71,42 @@ export class SliderComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.setUpSlider()
   }
-
+  
   setUpSlider() {
-    if (window.innerWidth < 500)
-      this.elementsToShow = this.slideConfig.breakpoints.sm;
-    else if (window.innerWidth < 900)
-      this.elementsToShow = this.slideConfig.breakpoints.md;
-    else if (window.innerWidth < 1300)
-      this.elementsToShow = this.slideConfig.breakpoints.lg;
+    const windowWidth = window.innerWidth;
+    const breakpoints = this.slideConfig.breakpoints;
+    const itemsLength = this.items.length;
+  
+    // Détermination du nombre d'éléments à afficher en fonction de la largeur de la fenêtre
+    if (windowWidth < 500)
+      this.elementsToShow = breakpoints.sm;
+    else if (windowWidth < 900)
+      this.elementsToShow = breakpoints.md;
+    // else if (windowWidth < 1300)
+    //   this.elementsToShow = breakpoints.lg;
     else
-      this.elementsToShow = this.slideConfig.breakpoints.xl;
+      this.elementsToShow = breakpoints.lg;
 
-    if (this.items.length < this.elementsToShow) {
-      this.elementsToShow = this.items.length;
-    }
-
-    this.dots = Array(this.items.length - this.elementsToShow + 1);
-
-    let container = this.slideContainer.nativeElement as HTMLElement;
-
+      if (this.items.length < this.elementsToShow) {
+        this.elementsToShow = this.items.length;
+      }
+  
+    // Assurer que le nombre d'éléments à afficher ne dépasse pas le nombre total d'éléments disponibles
+    this.elementsToShow = Math.min(this.elementsToShow, itemsLength);
+  
+    // Initialisation de l'array pour les indicateurs de position (dots)
+    this.dots = Array(itemsLength - this.elementsToShow + 1);
+  
+    // Récupération du conteneur de diapositives et calcul de la largeur
+    const container = this.slideContainer.nativeElement as HTMLElement;
     this.sliderContainerWidth = container.clientWidth;
     this.slideWidth = this.sliderContainerWidth / this.elementsToShow;
-    this.sliderWidth = this.slideWidth * this.items.length;
-
-    if(this.slideConfig.autoPlay) this.autoPlay()
+    this.sliderWidth = this.slideWidth * itemsLength;
+  
+    // Démarrage de la lecture automatique si activée dans la configuration
+    if (this.slideConfig.autoPlay) this.autoPlay();
   }
+  
 //////////////////////////////////////////////////////////////////////////////////////////
 
 prev() {

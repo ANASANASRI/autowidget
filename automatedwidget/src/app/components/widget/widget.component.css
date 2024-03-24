@@ -1,7 +1,5 @@
-
 .body {
   background-color: rgba(37, 37, 37, 0.768);
-  align-items: center;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,17 +9,18 @@
 
   
 .containerwidget {
-  width: 900px;
+  width: 1020px;
+  /* width: 900px; */
   min-height: 750px;
   height: auto;
   max-width: 100%;
+  
   margin: 0 auto; /* Center the container horizontally */
   flex-direction: column; /* Arrange child elements vertically */
   align-items: center; /* Center child elements horizontally */
   z-index: 3;
   /* background-color: rgb(241, 243, 241); */
   background-color: #FCFCFC;
-  /* height: auto; */
   padding: 15px 15px 15px 15px;
   margin-top: 2.5%;
   position: relative;
@@ -40,11 +39,12 @@
   position: absolute;
   right: 0;
   top: 0;
+  margin-top: 4px;
   margin-right: 8px;
 }
 
 .shadow-2xl {
-  --tw-shadow: 0 25px 1000px -12px rgb(0 0 0 / 0.25);
+  --tw-shadow: 0 25px 1000px -12px rgba(0, 0, 0, 0.303);
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
