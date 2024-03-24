@@ -1,0 +1,10 @@
+.green-link {
+    color: rgb(86, 169, 124); /* Set the link color to green */
+}
+
+.icon {
+    width: 180px; /* Adjust the width of the images */
+    height: 60px; /* Adjust the height of the images */
+    vertical-align: middle; /* Align the images vertically with the text */
+    margin-right: 5px; /* Add some margin to the right of the images for spacing */
+}

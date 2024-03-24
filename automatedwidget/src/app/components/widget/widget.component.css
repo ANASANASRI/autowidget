@@ -7,7 +7,6 @@
   margin: 0;
 } 
 
-  
 .containerwidget {
   width: 1020px;
   /* width: 900px; */
@@ -44,7 +43,7 @@
 }
 
 .shadow-2xl {
-  --tw-shadow: 0 25px 1000px -12px rgba(0, 0, 0, 0.303);
+  --tw-shadow: 0 25px 1000px -12px rgba(0, 0, 0, 0.399);
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
