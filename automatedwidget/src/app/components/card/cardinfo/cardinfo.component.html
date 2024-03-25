@@ -12,7 +12,7 @@
                 <img src="https://i.ibb.co/KN9KXG2/chip-tarjeta.png" class="chip" />
     
                 <div class="datos">
-                    <div class="grupo">
+                    <div class="groupe">
                         <p  *ngIf="cardNumber !== '' "
                             class="numero" 
                             id="numero">{{ cardNumber  }}
@@ -23,7 +23,7 @@
                         </p>
                     </div>
                     <div class="flexbox">
-                        <div class="grupo">
+                        <div class="groupe">
                             <p class="label" >Titulaire de la carte                        </p>
                             <p *ngIf=" cardName !== '' "
                                class="name"  
@@ -34,7 +34,7 @@
                                id="name"> Anas anasri 
                             </p>
                         </div>
-                        <div class="grupo" id="expiracion">
+                        <div class="groupe" id="expiracion">
                             <p class="label">Date d'expiration</p>
                             <p class="expiracion"><span id="mes"> {{ month }}</span>/<span id="year">{{ year }} </span></p>
                         </div>
@@ -46,7 +46,7 @@
             <div class="trasera">
                 <div class="barra-magnetica"></div>
                 <div class="datos">
-                    <div class="grupo" id="ccv">
+                    <div class="groupe" id="ccv">
                         <p class="label" id="cvvLabel"> CVV </p>
                         <p class="ccvP text-end" id="codigo"> {{ cvv }} </p>
                     </div>
@@ -64,7 +64,7 @@
         <form class="formuler-creditcard active " #formuler="ngForm" id="formuler-creditcard">
             
             <div class=" bg-white sm:rounded-3xl sm:py-5 sm:px-4">
-            <div class="grupo">
+            <div class="groupe">
                 <label for="inputNumero">Numéro de carte</label>
                 <input  type="text" 
                         id="inputNumero"
@@ -77,9 +77,10 @@
                         (keyup)="complete( formuler )"
                         (input)="formatCardNumber()"
                         [class.invalid-input]="!isValidCardNumber()"
+                        (click)="rellenarRecto()"
                         required>
             </div>
-            <div class="grupo">
+            <div class="groupe">
                 <label for="inputname">Titulaire de la carte </label>
                 <input type="text" 
                        id="inputname" 
@@ -88,14 +89,15 @@
                        [(ngModel)]= " cardName "
                        maxlength="24"
                        autocomplete="off"
+                       (click)="rellenarRecto()"
                        required>
             </div>
     
             <div class="flexbox">
-                <div class="grupo expira">
+                <div class="groupe expira">
                     <label for="selectMes">Date d'expiration</label>
-                    <div class="flexbox">
-                        <div class="grupo-select">
+                    <div class="flexbox" (click)="rellenarRecto()">
+                        <div class="groupe-select">
                             <select name="mes" 
                                     id="selectMes"
                                     [(ngModel)]=" month ">
@@ -108,7 +110,7 @@
                             </select>
                             <i class="fas fa-angle-down"></i>
                         </div>
-                        <div class="grupo-select">
+                        <div class="groupe-select">
                             <select name="year" 
                                     id="selectYear"
                                     [(ngModel)]=" year " 
@@ -120,7 +122,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="grupo ccv">
+                <div class="groupe ccv">
                     <label for="inputCCV">CVV</label>
                     <input type="text" 
                            id="inputCCV"

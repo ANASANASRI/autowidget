@@ -15,7 +15,7 @@ export class CardinfoComponent {
 
   mesesYear = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
 
-  years = [22, 23, 24, 25, 26, 27, 28]
+  years = [22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33]
 
   cardNumber    : string              = ''
   cardName      : string              = ''
@@ -27,20 +27,14 @@ export class CardinfoComponent {
 
   constructor( ){
     document.getElementById('selectMes')?.innerText!= 'Month'
-    document.getElementById('formuler-creditcard')?.classList.add('active');
   }
   
   // Agregando clase que rota la creditcard
   rotate(creditcard: HTMLElement) {
     creditcard.classList.toggle('active')
-    
   }
 
   // Mostrar formuler con boton giratorio
-  displayForm() {
-    document.getElementById('formuler-creditcard')?.classList.toggle('active')
-    document.getElementById('btn-abrir-formuler')?.classList.toggle('active')
-  }
 
   complete( form: NgForm ) {
 
@@ -112,6 +106,12 @@ export class CardinfoComponent {
     }
   }
 
+  rellenarRecto(){
+    if( document.getElementById('creditcard')?.classList.contains('active') ) {
+      document.getElementById('creditcard')?.classList.remove('active')
+    }
+  }
+
   formatCardNumber() {
     // Get the current value of cardNumber
     let formatted = this.cardNumber;
@@ -130,12 +130,4 @@ export class CardinfoComponent {
     return /^\d+$/.test(this.cardNumber);
   }
 
-
-  toggleForm() {
-    this.isFormActive = !this.isFormActive;
-    const formuler = document.getElementById('formuler-creditcard');
-    if (formuler) {
-      formuler.classList.toggle('active', this.isFormActive);
-    }
-  }
 }
