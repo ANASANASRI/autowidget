@@ -1,0 +1,17 @@
+::ng-deep .mat-step-header .mat-step-icon-state-number {
+    /* background-color: #23d27b; */
+    background-color: rgba(119, 119, 119, 0.54);
+    color: #fff;
+  }
+  
+  ::ng-deep .mat-step-header .mat-step-icon-selected,
+  ::ng-deep .mat-step-header .mat-step-icon-state-done,
+  ::ng-deep .mat-step-header .mat-step-icon-state-edit {
+    background-color: #23d27b;
+    color: #fff;
+  }
+  
+  .mat-step-header {
+    cursor: default !important;
+  }
+  

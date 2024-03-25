@@ -20,6 +20,8 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardComponent } from './components/card/card.component';
+import { CardstepsComponent } from './components/card/cardsteps/cardsteps.component';
+import { CardinfoComponent } from './components/card/cardinfo/cardinfo.component';
 
 
 
@@ -38,6 +40,8 @@ import { CardComponent } from './components/card/card.component';
     StepsComponent,
     GuideComponent,
     CardComponent,
+    CardstepsComponent,
+    CardinfoComponent,
   ],
   imports: [
     BrowserModule,

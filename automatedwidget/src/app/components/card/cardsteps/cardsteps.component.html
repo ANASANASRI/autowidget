@@ -1,0 +1,25 @@
+<mat-horizontal-stepper labelPosition="bottom" [linear]="true" #stepper>
+
+    <mat-step label="Paiement par carte">
+      <form [formGroup]="nameForm">
+        <app-cardinfo></app-cardinfo>
+        <!-- <div class="flex justify-end mt-80">
+          <button mat-button matStepperNext class="bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded">
+            Next
+          </button>
+        </div> -->
+      </form>
+    </mat-step>
+
+  
+    <mat-step label="done">
+      <app-guide></app-guide>
+      <div class="flex justify-end">
+        <button mat-button routerLink="<app-home/>" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">
+          Done
+        </button>
+      </div>
+    </mat-step>
+    
+  </mat-horizontal-stepper>
+  
