@@ -22,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CardComponent } from './components/card/card.component';
 import { CardstepsComponent } from './components/card/cardsteps/cardsteps.component';
 import { CardinfoComponent } from './components/card/cardinfo/cardinfo.component';
+import { PaypalComponent } from './components/paypal/paypal.component';
 
 
 
@@ -42,6 +43,7 @@ import { CardinfoComponent } from './components/card/cardinfo/cardinfo.component
     CardComponent,
     CardstepsComponent,
     CardinfoComponent,
+    PaypalComponent,
   ],
   imports: [
     BrowserModule,
