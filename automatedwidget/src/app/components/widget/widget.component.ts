@@ -18,12 +18,40 @@ export class WidgetComponent {
 
   ////////////////////////////redirect close button//////////////////////////////////
 
-  redirectUrl: string = "file:///C:/Users/anasa/OneDrive/Desktop/testTheWidgetWt1/index.html";
+  redirectUrl: string = "https://github.com/ANASANASRI/amanpay-front-w";
 
   constructor(private router: Router) {}
 
   redirectToUrl() {
     window.location.href = this.redirectUrl;
+  }
+
+  ///////////////////////////////////////////////
+
+  topPosition = 0;
+  leftPosition = 0;
+  isDragging = false;
+
+  onMouseDown(event: MouseEvent) {
+    this.isDragging = true;
+    const startX = event.clientX - this.leftPosition;
+    const startY = event.clientY - this.topPosition;
+
+    const onMouseMove = (moveEvent: MouseEvent) => {
+      if (this.isDragging) {
+        this.leftPosition = moveEvent.clientX - startX;
+        this.topPosition = moveEvent.clientY - startY;
+      }
+    };
+
+    const onMouseUp = () => {
+      this.isDragging = false;
+      document.removeEventListener('mousemove', onMouseMove);
+      document.removeEventListener('mouseup', onMouseUp);
+    };
+
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
   }
 
 }
