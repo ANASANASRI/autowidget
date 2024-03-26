@@ -27,6 +27,15 @@
 
   padding: 20px;
 }
+@media screen and (max-width: 1025px) {
+  .containerwidget {
+    width: 1020px;
+    min-height: 800px;
+    height: auto;
+    max-width: 100%;
+  }
+}
+
 
 .spacer {
   height: 34px; 

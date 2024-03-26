@@ -29,6 +29,13 @@
       max-width: 90% !important;
       padding-right: 5px;
     }
+    .formuler-creditcard{
+        padding-left: 0px;
+        padding-right: 90px;
+        margin-left: 0px; 
+            width: 90%;
+            max-width: 42%;
+      }
   }
   
   
