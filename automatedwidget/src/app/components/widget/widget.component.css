@@ -19,6 +19,7 @@
   z-index: 3;
   /* background-color: rgb(241, 243, 241); */
   background-color: #FCFCFC;
+
   padding: 15px 15px 15px 15px;
   margin-top: 2.5%;
   margin-bottom: 2.5%;
@@ -26,6 +27,7 @@
 
   padding: 20px;
 }
+
 @media screen and (max-width: 1025px) {
   .containerwidget {
     width: 1020px;
@@ -34,7 +36,6 @@
     max-width: 100%;
   }
 }
-
 
 .spacer {
   height: 34px; 

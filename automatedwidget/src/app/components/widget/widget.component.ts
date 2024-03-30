@@ -26,7 +26,7 @@ export class WidgetComponent {
     window.location.href = this.redirectUrl;
   }
 
-  ///////////////////////////////////////////////
+  ////////////////////////////enable move widget////////////////////////////////
 
   topPosition = 0;
   leftPosition = 0;
