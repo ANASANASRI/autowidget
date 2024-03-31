@@ -17,13 +17,15 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      // Extract the accessKey and host from query parameters
+      // Extract accessKey and host from query parameters
       this.accessKey = params['accessKey'];
       this.host = params['host'];
 
       // Log the received data
       console.log('Access Key:', this.accessKey);
       console.log('Host:', this.host);
+
+      // You can perform further processing with the received data here
     });
   }
   }
