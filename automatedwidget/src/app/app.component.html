@@ -1,9 +1,6 @@
 <h1>Welcome to my Angular App</h1>
+<p>Access Key: {{ accessKey }}</p>
+<p>Host: {{ host }}</p>
 
-<div *ngIf="accessKey && host">
-  <p>Data received from widget:</p>
-  <p>Access Key: {{ accessKey }}</p>
-  <p>Host: {{ host }}</p>
-</div>
 <app-widget></app-widget>
 
