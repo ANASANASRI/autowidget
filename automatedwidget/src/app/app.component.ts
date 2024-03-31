@@ -18,7 +18,7 @@ export class AppComponent {
   receiveMessageFromWidget() {
     window.addEventListener('message', (event) => {
       // Verify the sender origin
-      if (event.origin === 'https://anasanasri.github.io') {
+      if (event.origin === 'https://anasanasri.github.io/WidgetTest/') {
         // Access the data sent from the widget
         const data = event.data;
         console.log('Data received from widget:', data);
