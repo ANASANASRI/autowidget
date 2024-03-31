@@ -1,24 +1,24 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener ,OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'amanpay-front-w';
 
-  accessKey: string | undefined ;
+  accessKey: string | undefined;
   host: string | undefined;
 
-  constructor() {
+  ngOnInit() {
     this.receiveMessageFromWidget();
   }
 
   receiveMessageFromWidget() {
     window.addEventListener('message', (event) => {
       // Verify the sender origin
-      if (event.origin === 'https://anasanasri.github.io/WidgetTest/') {
+      if (event.origin === 'https://anasanasri.github.io') {
         // Access the data sent from the widget
         const data = event.data;
         console.log('Data received from widget:', data);
