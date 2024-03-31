@@ -12,7 +12,6 @@ import { SliderComponent } from './components/slider/slider.component';
 import { CreditcardComponent } from './components/creditcard/creditcard.component';
 import { HomeComponent } from './components/home/home.component';
 import { LogoscrollerComponent } from './components/logoscroller/logoscroller.component';
-import { ErrorComponent } from './components/error/error.component';
 import { StepsComponent } from './components/token/steps/steps.component';
 import { GuideComponent } from './components/token/guide/guide.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
@@ -23,6 +22,7 @@ import { CardComponent } from './components/card/card.component';
 import { CardstepsComponent } from './components/card/cardsteps/cardsteps.component';
 import { CardinfoComponent } from './components/card/cardinfo/cardinfo.component';
 import { PaypalComponent } from './components/paypal/paypal.component';
+import { ErrorpermissionComponent } from './components/errorpermission/errorpermission.component';
 
 
 
@@ -37,13 +37,13 @@ import { PaypalComponent } from './components/paypal/paypal.component';
     CreditcardComponent,
     HomeComponent,
     LogoscrollerComponent,
-    ErrorComponent,
     StepsComponent,
     GuideComponent,
     CardComponent,
     CardstepsComponent,
     CardinfoComponent,
     PaypalComponent,
+    ErrorpermissionComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +52,7 @@ import { PaypalComponent } from './components/paypal/paypal.component';
     MatStepperModule,
     MatFormFieldModule,
     ReactiveFormsModule
-    ],
+  ],
   providers: [
     provideAnimationsAsync('noop'),
     provideAnimationsAsync()

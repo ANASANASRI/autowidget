@@ -18,7 +18,7 @@ export class WidgetComponent {
 
   ////////////////////////////redirect close button//////////////////////////////////
 
-  redirectUrl: string = "https://github.com/ANASANASRI/amanpay-front-w";
+  redirectUrl: string = "https://anasanasri.github.io/WidgetTest/";
 
   constructor(private router: Router) {}
 

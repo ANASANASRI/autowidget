@@ -8,8 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  title = 'amanpay-front-w';
-
+  
   accessKey: string | undefined;
   host: string | undefined;
 
