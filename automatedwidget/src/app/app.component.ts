@@ -1,4 +1,6 @@
 import { Component, HostListener ,OnInit} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-root',
@@ -11,22 +13,17 @@ export class AppComponent implements OnInit {
   accessKey: string | undefined;
   host: string | undefined;
 
-  ngOnInit() {
-    this.receiveMessageFromWidget();
-  }
+  constructor(private route: ActivatedRoute) {}
 
-  receiveMessageFromWidget() {
-    window.addEventListener('message', (event) => {
-      // Verify the sender origin
-      if (event.origin === 'https://anasanasri.github.io') {
-        // Access the data sent from the widget
-        const data = event.data;
-        console.log('Data received from widget:', data);
-        
-        // Process the received data here
-        this.accessKey = data.accessKey;
-        this.host = data.host;
-      }
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      // Extract the accessKey and host from query parameters
+      this.accessKey = params['accessKey'];
+      this.host = params['host'];
+
+      // Log the received data
+      console.log('Access Key:', this.accessKey);
+      console.log('Host:', this.host);
     });
   }
   }
