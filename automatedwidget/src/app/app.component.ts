@@ -1,5 +1,7 @@
 import { Component, HostListener ,OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DataService } from './service/data.service';
+
 
 
 @Component({
@@ -8,29 +10,26 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  accessKey: string | undefined;
-  host: string | undefined;
-  merchantId: string | undefined;
-  orderId: string | undefined;
-  amount: number | undefined;
-  currency: string | undefined;
-  hmac: string | undefined;
-
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.accessKey = params['access_key'];
-      this.host = params['host'];
-      this.merchantId = params['merchant_id'];
-      this.orderId = params['order_id'];
-      this.amount = params['amount'];
-      this.currency = params['currency'];
-      this.hmac = params['hmac'];
+      this.dataService.accessKey = params['access_key'];
+      this.dataService.host = params['host'];
+      this.dataService.merchantId = params['merchant_id'];
+      this.dataService.orderId = params['order_id'];
+      this.dataService.amount = params['amount'];
+      this.dataService.currency = params['currency'];
+      this.dataService.hmac = params['hmac'];
     });
+  }
+    // You can access variables from the service like this
+    accessKey = this.dataService.accessKey;
+    host = this.dataService.host;
+    merchantId = this.dataService.merchantId;
+    orderId = this.dataService.orderId;
+    amount = this.dataService.amount;
+    currency = this.dataService.currency;
+    hmac = this.dataService.hmac;
   
-  }
-
-
-
-  }
+}

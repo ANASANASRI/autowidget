@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../../service/data.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit{
   isMobile!: boolean; // Definite Assignment Assertion
+//
+constructor(private dataService: DataService) { }
 
-  constructor() { }
-
+// You can access variables from the service like this
+accessKey = this.dataService.accessKey;
+host = this.dataService.host;
+merchantId = this.dataService.merchantId;
+orderId = this.dataService.orderId;
+amount = this.dataService.amount;
+currency = this.dataService.currency;
+hmac = this.dataService.hmac;
+//
   ngOnInit(): void {
     this.checkIfMobile();
     window.addEventListener('resize', () => {
