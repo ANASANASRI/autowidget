@@ -8,29 +8,28 @@ import { DataService } from './service/data.service'; // Import your DataService
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  constructor(private route: ActivatedRoute, private dataService: DataService) { }
+  accessKey: string | undefined;
+  host: string | undefined;
+  merchantId: string | undefined;
+  orderId: string | undefined;
+  amount: number | undefined;
+  currency: string | undefined;
+  hmac: string | undefined;
 
+  constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.accessKey = params['access_key'];
-      this.host = params['host'];
-      this.merchantId = params['merchant_id'];
-      this.orderId = params['order_id'];
-      this.amount = params['amount'];
-      this.currency = params['currency'];
-      this.hmac = params['hmac'];
+      this.dataService.updateParams(params); // Update the data in the service
     });
-  
-  }
-    // You can access variables from the service like this
-    accessKey = this.dataService.accessKey;
-    host = this.dataService.host;
-    merchantId = this.dataService.merchantId;
-    orderId = this.dataService.orderId;
-    amount = this.dataService.amount;
-    currency = this.dataService.currency;
-    hmac = this.dataService.hmac;
 
+    // You can access variables from the service like this
+    this.accessKey = this.dataService.accessKey;
+    this.host = this.dataService.host;
+    this.merchantId = this.dataService.merchantId;
+    this.orderId = this.dataService.orderId;
+    this.amount = this.dataService.amount;
+    this.currency = this.dataService.currency;
+    this.hmac = this.dataService.hmac;
   }
-    
+}
