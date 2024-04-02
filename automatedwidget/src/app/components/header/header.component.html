@@ -7,10 +7,20 @@
   
   
   <div class="h-24 rounded-lg bg-white border-2 border-opacity-10 border-gray-350 hover:shadow-lg hover:border-emerald-400">
-    <i class="text-slate-800 text-center block">Anas anasri.......amount: {{ dataService.amount }} DH</i>
-    <i class="text-slate-800 text-center block">Merchant ID: {{ dataService.merchantId }}.......Host: {{ dataService.host }}</i>
-    <i class="text-slate-800 text-center block">Access Key: {{ dataService.accessKey }}.......Order ID: {{ dataService.orderId }}</i>
-    <i class="text-slate-800 text-center block">Currency: {{ dataService.currency }}.......HMAC: {{ dataService.hmac }}</i>
+    <div data-sr-id="282"
+		style="visibility: visible; opacity: 1; transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0.2s;"><a
+			href="/my-blogs/21aed16dfbe3">
+			<div
+				class=" duration-200 h-full overflow-hidden group px-2 py-2 rounded-t hover:bg-block  hover:text-emerald-500 border-l-4 border-transparent hover:border-emerald-500">
+				<h2 class="text-base mb-1 tracking-wider">Montant  ({{ dataService.currency }}) : {{ dataService.amount }} </h2>
+				<h1 class="text-base mb-1 tracking-wider">{{ dataService.amount }} </h1>
+				<p class="flex flex-wrap gap-2 items-center">
+					<span class="px-3 my-1 text-xs bg-emerald-500 bg-opacity-[0.09] rounded-full text-slate-900 dark:text-gray-100 group-hover:bg-opacity-[0.2] ">{{ dataService.merchantId }}</span>
+				</p>
+				<p class="text-[10px] text-gray-600 dark:text-gray-300 mt-2">Order ID: {{ dataService.orderId }}</p>
+			</div>
+		</a>
+    </div>
   </div>
   
 </div>
