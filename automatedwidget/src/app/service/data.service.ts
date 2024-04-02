@@ -13,14 +13,4 @@ export class DataService {
   hmac: string | undefined;
 
   constructor() { }
-
-  updateParams(params: any): void {
-    this.accessKey = params['access_key'];
-    this.host = params['host'];
-    this.merchantId = params['merchant_id'];
-    this.orderId = params['order_id'];
-    this.amount = params['amount'];
-    this.currency = params['currency'];
-    this.hmac = params['hmac'];
-  }
 }

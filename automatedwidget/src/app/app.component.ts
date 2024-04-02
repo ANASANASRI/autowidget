@@ -1,35 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener ,OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DataService } from './service/data.service'; // Import your DataService
+import { DataService } from './service/data.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  accessKey: string | undefined;
-  host: string | undefined;
-  merchantId: string | undefined;
-  orderId: string | undefined;
-  amount: number | undefined;
-  currency: string | undefined;
-  hmac: string | undefined;
 
-  constructor(private route: ActivatedRoute, private dataService: DataService) { }
+  constructor(private route: ActivatedRoute, public  dataService: DataService) { }
+
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.dataService.updateParams(params); // Update the data in the service
+      this.dataService.accessKey = params['access_key'];
+      this.dataService.host = params['host'];
+      this.dataService.merchantId = params['merchant_id'];
+      this.dataService.orderId = params['order_id'];
+      this.dataService.amount = params['amount'];
+      this.dataService.currency = params['currency'];
+      this.dataService.hmac = params['hmac'];
     });
-
-    // You can access variables from the service like this
-    this.accessKey = this.dataService.accessKey;
-    this.host = this.dataService.host;
-    this.merchantId = this.dataService.merchantId;
-    this.orderId = this.dataService.orderId;
-    this.amount = this.dataService.amount;
-    this.currency = this.dataService.currency;
-    this.hmac = this.dataService.hmac;
+  
   }
-}
+
+  }
