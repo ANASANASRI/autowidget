@@ -1,18 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  accessKey: string | undefined;
-  host: string | undefined;
-  merchantId: number | undefined;
-  orderId: string | undefined;
-  amount: number | undefined;
-  currency: string | undefined;
-  hmac: string | undefined;
-
   private _accessKey = new BehaviorSubject<string | undefined>(undefined);
   private _host = new BehaviorSubject<string | undefined>(undefined);
   private _merchantId = new BehaviorSubject<number | undefined>(undefined);
@@ -39,13 +31,61 @@ export class DataService {
     this.amount = params['amount'];
     this.currency = params['currency'];
     this.hmac = params['hmac'];
+  }
 
-    this._accessKey.next(params['access_key']);
-    this._host.next(params['host']);
-    this._merchantId.next(params['merchant_id']);
-    this._orderId.next(params['order_id']);
-    this._amount.next(params['amount']);
-    this._currency.next(params['currency']);
-    this._hmac.next(params['hmac']);
+  get accessKey(): string | undefined {
+    return this._accessKey.value;
+  }
+
+  set accessKey(value: string | undefined) {
+    this._accessKey.next(value);
+  }
+
+  get host(): string | undefined {
+    return this._host.value;
+  }
+
+  set host(value: string | undefined) {
+    this._host.next(value);
+  }
+
+  get merchantId(): number | undefined {
+    return this._merchantId.value;
+  }
+
+  set merchantId(value: number | undefined) {
+    this._merchantId.next(value);
+  }
+
+  get orderId(): string | undefined {
+    return this._orderId.value;
+  }
+
+  set orderId(value: string | undefined) {
+    this._orderId.next(value);
+  }
+
+  get amount(): number | undefined {
+    return this._amount.value;
+  }
+
+  set amount(value: number | undefined) {
+    this._amount.next(value);
+  }
+
+  get currency(): string | undefined {
+    return this._currency.value;
+  }
+
+  set currency(value: string | undefined) {
+    this._currency.next(value);
+  }
+
+  get hmac(): string | undefined {
+    return this._hmac.value;
+  }
+
+  set hmac(value: string | undefined) {
+    this._hmac.next(value);
   }
 }

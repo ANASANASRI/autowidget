@@ -14,7 +14,6 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
   constructor(public dataService: DataService,private merchantMethodsService: MerchantMethodsService) {} 
 
-  merchantId : number | undefined;
   selectedItemIndex: number = -1;
 
   @Input('items')
@@ -23,8 +22,8 @@ export class SliderComponent implements OnInit, AfterViewInit {
   // Number(this.dataService.merchantId)
   
   getMerchantPaymentMethods(): void {
-    if (this.merchantId !== undefined) {
-    this.merchantMethodsService.getMerchantPaymentMethods(this.merchantId)
+    if (this.dataService.merchantId !== undefined) {
+    this.merchantMethodsService.getMerchantPaymentMethods(this.dataService.merchantId)
       .subscribe(
         (paymentMethods: PaymentMethod[]) => {
           this.items = paymentMethods;
@@ -76,7 +75,6 @@ export class SliderComponent implements OnInit, AfterViewInit {
   
   ngAfterViewInit(): void {
     console.log('***************************:', this.dataService.merchantId);
-    this.merchantId = this.dataService.merchantId;
     // Do nothing here, let setUpSlider be called when the data is ready
   }
   
