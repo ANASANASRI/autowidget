@@ -11,8 +11,13 @@ export class HeaderComponent implements OnInit ,AfterViewInit{
   imageUrl: string = ''; // Declare imageUrl variable
 
   constructor(public dataService: DataService) { }
+  merchantId: number | undefined;
+
  
   ngOnInit(): void {
+    this.dataService.merchantId$.subscribe(merchantId => {
+      this.merchantId = merchantId;
+    });
     this.checkIfMobile();
     this.setImageUrlForMobile();
     window.addEventListener('resize', () => {
@@ -20,7 +25,7 @@ export class HeaderComponent implements OnInit ,AfterViewInit{
     });
   }
   ngAfterViewInit(): void {
-    console.log('*************header**************:', this.dataService.merchantId);
+    console.log('*************header**************:', this.dataService.merchantId,'/////',this.merchantId);
     // Do nothing here, let setUpSlider be called when the data is ready
   }
   
