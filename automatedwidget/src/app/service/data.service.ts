@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class DataService {
   accessKey: string | undefined;
   host: string | undefined;
-  merchantId: string | undefined;
+  merchantId: number | undefined;
   orderId: string | undefined;
   amount: number | undefined;
   currency: string | undefined;

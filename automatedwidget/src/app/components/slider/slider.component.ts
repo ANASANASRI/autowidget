@@ -21,16 +21,19 @@ export class SliderComponent implements OnInit, AfterViewInit {
   items: PaymentMethod[] = [];
 
   // Number(this.dataService.merchantId)
+  
   getMerchantPaymentMethods(): void {
-    this.merchantMethodsService.getMerchantPaymentMethods(Number(this.dataService.merchantId))
+    if (this.dataService.merchantId !== undefined) {
+    this.merchantMethodsService.getMerchantPaymentMethods(this.dataService.merchantId)
       .subscribe(
         (paymentMethods: PaymentMethod[]) => {
           this.items = paymentMethods;
           console.log('Payment Methods:', paymentMethods);
           this.setUpSlider(); // Call setUpSlider once the data is fetched
         }
-      );
+      );}
   }
+
   
 
   ///////////////////////////////////////////////////////////////////////////
