@@ -23,17 +23,15 @@ export class SliderComponent implements OnInit, AfterViewInit {
   // Number(this.dataService.merchantId)
   
   getMerchantPaymentMethods(): void {
-    if (this.dataService.merchantId !== undefined) {
-    this.merchantMethodsService.getMerchantPaymentMethods(this.dataService.merchantId)
+    this.merchantMethodsService.getMerchantPaymentMethods(this.dataService.merchantId || 1)
       .subscribe(
         (paymentMethods: PaymentMethod[]) => {
           this.items = paymentMethods;
           console.log('Payment Methods:', paymentMethods);
           this.setUpSlider(); // Call setUpSlider once the data is fetched
         }
-      );}
+      );
   }
-
   
 
   ///////////////////////////////////////////////////////////////////////////
@@ -76,6 +74,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
   }
   
   ngAfterViewInit(): void {
+    console.log('Payment Methods:', this.dataService.merchantId);
     // Do nothing here, let setUpSlider be called when the data is ready
   }
   
