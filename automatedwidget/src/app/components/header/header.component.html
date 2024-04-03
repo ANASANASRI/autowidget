@@ -1,25 +1,23 @@
 <div class="grid grid-cols-1 gap-4 transition-[grid-template-columns] lg:grid-cols-[120px_1fr] lg:gap-8 lg:[&:has(>*:first-child:hover)]:grid-cols-[160px_1fr]">
   
   <!-- <div (mouseenter)="toggleImage(true)" (mouseleave)="toggleImage(false)" (click)="reloadPage()" class="h-24 rounded-lg bg-white border-2 border-opacity-10 border-gray-350 hover:shadow-lg hover:border-emerald-400"> -->
-  <div (mouseenter)="toggleImage(true)" (mouseleave)="toggleImage(false)" (click)="reloadPage()" class="h-24 ">
-    <img [src]="isMobile ? 'https://i.ibb.co/7K50gbw/Pay-Pikpng.png' : 'https://i.ibb.co/gFZGbV3/Logopng.png'" alt="Logo" class=" h-full w-full object-contain hover:border-emerald-400">
-  </div>
-  
+    <div  (mouseenter)="toggleImage(true)" (mouseleave)="toggleImage(false)" (click)="reloadPage()" class="h-24">
+      <img [src]="isMobile ? 'https://i.ibb.co/7K50gbw/Pay-Pikpng.png' : imageUrl" alt="Logo" class="h-full w-full object-contain hover:border-emerald-400">
+    </div>
+    
+    
   
   <div class="h-24 rounded-lg bg-white border-2 border-opacity-10 border-gray-350 hover:shadow-lg hover:border-emerald-400">
-    <div data-sr-id="282"
-		style="visibility: visible; opacity: 1; transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0.2s;"><a
-			href="/my-blogs/21aed16dfbe3">
-			<div
-				class=" duration-200 h-full overflow-hidden group px-2 py-2 rounded-t hover:bg-block  hover:text-emerald-500 border-l-4 border-transparent hover:border-emerald-500">
-				<h1 class="text-base mb-1 tracking-wider">Montant  ({{ dataService.currency }}) : {{ dataService.amount }} </h1>
-				<p class="flex flex-wrap gap-2 items-center">
-					<span class="px-3 my-1 text-xs bg-emerald-500 bg-opacity-[0.09] rounded-full text-slate-900 dark:text-gray-100 group-hover:bg-opacity-[0.2] ">{{ dataService.merchantId }}</span>
-				</p>
-				<p class="text-[10px] text-slate-600 dark:text-gray-300 mt-2">Commande : {{ dataService.orderId }}</p>
-			</div>
-		</a>
-    </div>
+      <div 	style="visibility: visible; opacity: 1; transition: opacity 1s cubic-bezier(0.5, 0, 0, 1) 0.2s;">
+        <div class=" duration-200 h-full overflow-hidden group px-2 py-2 rounded-t rounded-b hover:bg-block  hover:text-emerald-500 border-l-2 border-transparent hover:border-emerald-400">
+          <h1 class="text-base mb-1 tracking-wider">Montant  ({{ dataService.currency }}) : {{ dataService.amount }} </h1>
+          <p class="flex flex-wrap gap-2 items-center">
+            <span class="px-3 my-1 text-xs bg-emerald-500 bg-opacity-[0.09] rounded-full text-gray-900 dark:text-gray-100 group-hover:bg-opacity-[0.2] "> dataService.merchantname </span>
+            <span class="px-3 my-1 text-xs bg-emerald-500 bg-opacity-[0.09] rounded-full text-gray-900 dark:text-gray-100 group-hover:bg-opacity-[0.2] ">{{ dataService.merchantId }}</span>
+          </p>
+          <p class="text-[10px] text-gray-700 dark:text-gray-300 mt-2">Commande : {{ dataService.orderId }}</p>
+        </div>
+      </div>
   </div>
   
 </div>
@@ -38,3 +36,14 @@
 
   </div>
 </div> -->
+
+<!-- <div class="flex flex-row items-center">
+
+      <div class="px-4">
+        <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <span class="ml-3 text-xl">Pay Pik</span>
+        </a>      
+      </div> -->

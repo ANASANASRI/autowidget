@@ -23,6 +23,7 @@ import { CardstepsComponent } from './components/card/cardsteps/cardsteps.compon
 import { CardinfoComponent } from './components/card/cardinfo/cardinfo.component';
 import { PaypalComponent } from './components/paypal/paypal.component';
 import { ErrorpermissionComponent } from './components/errorpermission/errorpermission.component';
+import { HttpClientModule } from "@angular/common/http";
 
 
 
@@ -51,7 +52,8 @@ import { ErrorpermissionComponent } from './components/errorpermission/errorperm
     FormsModule,
     MatStepperModule,
     MatFormFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     provideAnimationsAsync('noop'),
