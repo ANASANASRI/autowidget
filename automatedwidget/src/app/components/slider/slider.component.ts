@@ -3,6 +3,7 @@ import { MerchantMethodsService } from '../../service/merchant-methods.service';
 import { AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { SlideConfig } from '../../model/slide-config.model';
 import { DataService } from '../../service/data.service';
+import { ActivatedRoute } from '@angular/router'; 
 
 
 @Component({
@@ -12,7 +13,7 @@ import { DataService } from '../../service/data.service';
 })
 export class SliderComponent implements OnInit, AfterViewInit {
 
-  constructor(public dataService: DataService,private merchantMethodsService: MerchantMethodsService) {} 
+  constructor(public dataService: DataService,private merchantMethodsService: MerchantMethodsService,private route: ActivatedRoute) {} 
 
   selectedItemIndex: number = -1;
 
@@ -71,6 +72,15 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.getMerchantPaymentMethods();
+    this.route.queryParams.subscribe(params => {
+      this.dataService.accessKey = params['access_key'];
+      this.dataService.host = params['host'];
+      this.dataService.merchantId = params['merchant_id'];
+      this.dataService.orderId = params['order_id'];
+      this.dataService.amount = params['amount'];
+      this.dataService.currency = params['currency'];
+      this.dataService.hmac = params['hmac'];
+    });
   }
   
   ngAfterViewInit(): void {
