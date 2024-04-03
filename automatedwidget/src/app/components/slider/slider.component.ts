@@ -22,7 +22,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
   // Number(this.dataService.merchantId)
   getMerchantPaymentMethods(): void {
-    this.merchantMethodsService.getMerchantPaymentMethods(7)
+    this.merchantMethodsService.getMerchantPaymentMethods(Number(this.dataService.merchantId))
       .subscribe(
         (paymentMethods: PaymentMethod[]) => {
           this.items = paymentMethods;
