@@ -13,7 +13,9 @@ import { DataService } from '../../service/data.service';
 })
 export class SliderComponent implements OnInit, AfterViewInit {
 
-  constructor(public dataService: DataService,private merchantMethodsService: MerchantMethodsService) {} 
+  merchantId: number | undefined;
+
+  constructor(private dataService: DataService,private merchantMethodsService: MerchantMethodsService) {} 
 
   selectedItemIndex: number = -1;
 
@@ -23,8 +25,8 @@ export class SliderComponent implements OnInit, AfterViewInit {
   // Number(this.dataService.merchantId)
   
   getMerchantPaymentMethods(): void {
-    if (this.dataService.merchantId !== undefined) {
-    this.merchantMethodsService.getMerchantPaymentMethods(this.dataService.merchantId)
+    if (this.merchantId !== undefined) {
+    this.merchantMethodsService.getMerchantPaymentMethods(this.merchantId)
       .subscribe(
         (paymentMethods: PaymentMethod[]) => {
           this.items = paymentMethods;
@@ -71,9 +73,12 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
-    if (this.dataService.merchantId !== undefined) {
-      this.getMerchantPaymentMethods();
-    }
+    this.dataService.merchantId$.subscribe(merchantId => {
+      console.log('Merchant ID from DataService:', merchantId); // Log merchantId value from DataService
+      this.merchantId = merchantId;
+      // You can perform calculations here with the updated merchantId
+    });
+    this.getMerchantPaymentMethods();
   }
   
   ngAfterViewInit(): void {
