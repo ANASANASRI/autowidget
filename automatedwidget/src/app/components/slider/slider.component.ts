@@ -1,9 +1,9 @@
+import { Merchant } from './../../model/merchant.model';
 import { PaymentMethod } from './../../model/payment-method.model'; // Import PaymentMethod
 import { MerchantMethodsService } from '../../service/merchant-methods.service'; // Import your service
 import { AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { SlideConfig } from '../../model/slide-config.model';
 import { DataService } from '../../service/data.service';
-import { ActivatedRoute } from '@angular/router'; 
 
 
 @Component({
@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SliderComponent implements OnInit, AfterViewInit {
 
-  constructor(public dataService: DataService,private merchantMethodsService: MerchantMethodsService,private route: ActivatedRoute) {} 
+  constructor(public dataService: DataService,private merchantMethodsService: MerchantMethodsService) {} 
 
   selectedItemIndex: number = -1;
 
@@ -71,16 +71,9 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
 
   ngOnInit(): void {
-    this.getMerchantPaymentMethods();
-    this.route.queryParams.subscribe(params => {
-      this.dataService.accessKey = params['access_key'];
-      this.dataService.host = params['host'];
-      this.dataService.merchantId = params['merchant_id'];
-      this.dataService.orderId = params['order_id'];
-      this.dataService.amount = params['amount'];
-      this.dataService.currency = params['currency'];
-      this.dataService.hmac = params['hmac'];
-    });
+    if (this.dataService.merchantId !== undefined) {
+      this.getMerchantPaymentMethods();
+    }
   }
   
   ngAfterViewInit(): void {
@@ -190,4 +183,3 @@ prev() {
 
 
 }
-
