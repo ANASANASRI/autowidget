@@ -16,7 +16,21 @@ export class SliderComponent implements OnInit, AfterViewInit {
   merchantId: number | undefined;
 
   constructor(private dataService: DataService,private merchantMethodsService: MerchantMethodsService) {} 
-
+  ngOnInit(): void {
+    // this.dataService.merchantId$.subscribe(merchantId => {
+    //   console.log('Merchant ID from DataService:*****', merchantId); // Log merchantId value from DataService
+    //   this.merchantId = merchantId;
+    //   this.getMerchantPaymentMethods();
+    // });
+  }
+  
+  ngAfterViewInit(): void {
+    this.dataService.merchantId$.subscribe(merchantId => {
+      console.log('Merchant ID from DataService ***************:', merchantId); // Log merchantId value from DataService
+      this.merchantId = merchantId;
+      this.getMerchantPaymentMethods();
+    });
+  }
   selectedItemIndex: number = -1;
 
   @Input('items')
@@ -72,21 +86,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
   }
 
 
-  ngOnInit(): void {
-    this.dataService.merchantId$.subscribe(merchantId => {
-      console.log('Merchant ID from DataService:*****', merchantId); // Log merchantId value from DataService
-      this.merchantId = merchantId;
-      this.getMerchantPaymentMethods();
-    });
-  }
-  
-  ngAfterViewInit(): void {
-    this.dataService.merchantId$.subscribe(merchantId => {
-      console.log('Merchant ID from DataService ***************8:', merchantId); // Log merchantId value from DataService
-      this.merchantId = merchantId;
-      this.getMerchantPaymentMethods();
-    });
-  }
+
   
   
   getItems() {
