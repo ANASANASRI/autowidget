@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../service/data.service';
+import { DataService } from '../../service/data.service'; // Import DataService
 
 @Component({
   selector: 'app-test',
@@ -9,12 +9,13 @@ import { DataService } from '../../service/data.service';
 export class TestComponent implements OnInit {
   merchantId: number | undefined;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService) { } // Inject DataService into TestComponent
 
   ngOnInit(): void {
     this.dataService.merchantId$.subscribe(merchantId => {
+      console.log('Merchant ID from DataService:', merchantId); // Log merchantId value from DataService
       this.merchantId = merchantId;
-      console.log('Merchant ID in TestComponent:', this.merchantId); // Log the merchantId value to the console
+      // You can perform calculations here with the updated merchantId
     });
   }
 }
