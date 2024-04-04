@@ -24,6 +24,7 @@ import { CardinfoComponent } from './components/card/cardinfo/cardinfo.component
 import { PaypalComponent } from './components/paypal/paypal.component';
 import { ErrorpermissionComponent } from './components/errorpermission/errorpermission.component';
 import { HttpClientModule } from "@angular/common/http";
+import { TestComponent } from './components/test/test.component';
 
 
 
@@ -45,6 +46,7 @@ import { HttpClientModule } from "@angular/common/http";
     CardinfoComponent,
     PaypalComponent,
     ErrorpermissionComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,
