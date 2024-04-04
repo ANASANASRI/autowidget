@@ -16,11 +16,15 @@
     <div *ngIf="selectedOptionIndex !== undefined; else defaultOption">
 
         <!-- <app-creditcard *ngIf="selectedOptionIndex === 0"></app-creditcard> -->
-        <app-card *ngIf="selectedOptionIndex === 0"></app-card>
+        <app-card *ngIf="selectedOptionIndex === 2"></app-card>
 
-        <app-token *ngIf="selectedOptionIndex === 2"></app-token>
+        <app-token *ngIf="selectedOptionIndex === 1"></app-token>
 
-        <app-paypal *ngIf="selectedOptionIndex === 6"></app-paypal>
+        <app-amanty *ngIf="selectedOptionIndex === 3"></app-amanty>
+
+        <app-paydirect *ngIf="selectedOptionIndex === 4"></app-paydirect>
+
+        <app-paypal *ngIf="selectedOptionIndex === 5"></app-paypal>
 
     </div>
 

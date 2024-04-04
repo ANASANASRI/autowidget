@@ -36,20 +36,28 @@ export class SliderComponent implements OnInit, AfterViewInit {
   @Input('items')
   items: PaymentMethod[] = [];
 
-  // Number(this.dataService.merchantId)
   
+  // getMerchantPaymentMethods(): void {
+  //   if (this.merchantId !== undefined) {
+  //   this.merchantMethodsService.getMerchantPaymentMethods(this.merchantId)
+  //     .subscribe(
+  //       (paymentMethods: PaymentMethod[]) => {
+  //         this.items = paymentMethods;
+  //         console.log('Payment Methods:', paymentMethods);
+  //         this.setUpSlider(); // Call setUpSlider once the data is fetched
+  //       }
+  //     );}
+  // }
   getMerchantPaymentMethods(): void {
-    if (this.merchantId !== undefined) {
-    this.merchantMethodsService.getMerchantPaymentMethods(this.merchantId)
+    this.merchantMethodsService.getMerchantPaymentMethods(7)
       .subscribe(
         (paymentMethods: PaymentMethod[]) => {
           this.items = paymentMethods;
           console.log('Payment Methods:', paymentMethods);
           this.setUpSlider(); // Call setUpSlider once the data is fetched
         }
-      );}
+      );
   }
-  
 
   ///////////////////////////////////////////////////////////////////////////
 
@@ -184,9 +192,8 @@ prev() {
   //////////////////////////////////////////
   // Inside your component class
   handleOptionClick(index: number) {
-    this.optionClicked.emit(index);
+    this.optionClicked.emit(this.items[index].paymentMethodId);
     this.selectedItemIndex = index;
   }
-
 
 }

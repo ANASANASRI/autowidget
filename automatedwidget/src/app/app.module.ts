@@ -25,6 +25,8 @@ import { PaypalComponent } from './components/paypal/paypal.component';
 import { ErrorpermissionComponent } from './components/errorpermission/errorpermission.component';
 import { HttpClientModule } from "@angular/common/http";
 import { TestComponent } from './components/test/test.component';
+import { AmantyComponent } from './components/amanty/amanty.component';
+import { PaydirectComponent } from './components/paydirect/paydirect.component';
 
 
 
@@ -47,6 +49,8 @@ import { TestComponent } from './components/test/test.component';
     PaypalComponent,
     ErrorpermissionComponent,
     TestComponent,
+    AmantyComponent,
+    PaydirectComponent,
   ],
   imports: [
     BrowserModule,
