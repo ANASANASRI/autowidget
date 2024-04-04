@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../../service/data.service'; // Import DataService
+import { DataService } from '../../service/data.service';
 
 @Component({
   selector: 'app-test',
@@ -7,10 +7,14 @@ import { DataService } from '../../service/data.service'; // Import DataService
   styleUrls: ['./test.component.css']
 })
 export class TestComponent implements OnInit {
+  merchantId: number | undefined;
 
-  constructor(public dataService: DataService) { } // Inject DataService into TestComponent
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
-    console.log('Merchant ID from DataService:', this.dataService.merchantId); // Log merchantId value from DataService
+    this.dataService.merchantId$.subscribe(merchantId => {
+      this.merchantId = merchantId;
+      console.log('Merchant ID in TestComponent:', this.merchantId); // Log the merchantId value to the console
+    });
   }
 }
