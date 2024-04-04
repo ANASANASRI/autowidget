@@ -74,15 +74,18 @@ export class SliderComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataService.merchantId$.subscribe(merchantId => {
-      console.log('Merchant ID from DataService:', merchantId); // Log merchantId value from DataService
+      console.log('Merchant ID from DataService:*****', merchantId); // Log merchantId value from DataService
       this.merchantId = merchantId;
       this.getMerchantPaymentMethods();
     });
   }
   
   ngAfterViewInit(): void {
-    console.log('***************************:', this.dataService.merchantId);
-    // Do nothing here, let setUpSlider be called when the data is ready
+    this.dataService.merchantId$.subscribe(merchantId => {
+      console.log('Merchant ID from DataService ***************8:', merchantId); // Log merchantId value from DataService
+      this.merchantId = merchantId;
+      this.getMerchantPaymentMethods();
+    });
   }
   
   
