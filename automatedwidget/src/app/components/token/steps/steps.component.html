@@ -1,6 +1,6 @@
-<mat-horizontal-stepper labelPosition="bottom" [linear]="true" #stepper>
+<mat-stepper labelPosition="bottom" [linear]="true" #stepper>
 
-    <mat-step label="Enter your name">
+    <mat-step [stepControl]="nameForm" label="Enter your name" [editable]="isNameEditable">
       <form [formGroup]="nameForm">
         <div class="relative z-0 w-full mb-8 group mt-3">
           <input type="text" formControlName="firstName" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-500 peer" placeholder=" " required />
@@ -14,7 +14,7 @@
       </form>
     </mat-step>
   
-    <mat-step label="Enter your email">
+    <mat-step [stepControl]="emailForm" label="Enter your email" [editable]="isNameEditable">
       <form [formGroup]="emailForm">
         <div class="relative z-0 w-full mb-8 group mt-3">
           <input type="email" formControlName="email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-500 peer" placeholder=" " required />
@@ -24,21 +24,21 @@
           <button mat-button matStepperPrevious class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">
             Back
           </button>
-          <button mat-button [disabled]="!emailForm.valid" matStepperNext class="bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded">
+          <button mat-button (click)="makeNameNoEditable()" [disabled]="!emailForm.valid" matStepperNext class="bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded">
             Obtenir votre code commande
           </button>
         </div>
       </form>
     </mat-step>
   
-    <mat-step label="Get your token">
+    <mat-step label="Get your token" [editable]="false">
       <app-guide></app-guide>
       <div class="flex justify-end">
-        <button mat-button routerLink="<app-home/>" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">
+        <button mat-button  routerLink="<app-home/>" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">
           Done
         </button>
       </div>
     </mat-step>
     
-  </mat-horizontal-stepper>
+  </mat-stepper>
   
