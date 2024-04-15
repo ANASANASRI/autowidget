@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
       this.imageUrl = 'https://i.ibb.co/7K50gbw/Pay-Pikpng.png';
     } else {
       if (hovering) {
-        this.imageUrl = 'https://i.ibb.co/yyyD2SV/Logohover.png';
+        this.imageUrl = 'https://i.ibb.co/C08m5wn/Logohover.png';
       } else {
         this.imageUrl = 'https://i.ibb.co/gFZGbV3/Logopng.png';
       }

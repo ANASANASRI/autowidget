@@ -34,7 +34,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
             </svg>
         </button>
-      
+
     </div>
 </div>
 
@@ -44,9 +44,9 @@
 <!-- Dots navigation -->
 <div *ngIf=" this.slideConfig.showDots && this.dots.length>1 " class="mt-10 flex justify-center">
     <ul class="flex gap-2">
-      <li (click)="move(i+1)" *ngFor="let dot of dots;let i=index">
-        <span class="w-4 h-4 rounded-full bg-emerald-600 {{i+1===this.activeSlideID?'':'bg-opacity-20'}} flex"></span>
-      </li>
+        <li (click)="move(i+1)" *ngFor="let dot of dots;let i=index">
+            <span class="w-4 h-4 rounded-full bg-emerald-600 {{i+1===this.activeSlideID?'':'bg-opacity-20'}} flex"></span>
+        </li>
     </ul>
 </div>
 
