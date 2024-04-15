@@ -43,4 +43,9 @@ export class StepsComponent implements OnInit {
     this.isNameEditable = false;
   }
 
+
+  ///////////////
+  reloadPage() {
+    window.location.reload();
+  }
 }

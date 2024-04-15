@@ -27,4 +27,22 @@ export class CardstepsComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]] 
     });
   }
+
+  /////////
+
+    isNameEditable: boolean = true;
+
+    // makeNameEditable() {
+    // this.isNameEditable = true;
+    // }
+    makeNameNoEditable() {
+      this.isNameEditable = false;
+    }
+
+
+  ///////////////
+  reloadPage() {
+    window.location.reload();
+  }
+  
 }
