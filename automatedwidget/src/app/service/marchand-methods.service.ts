@@ -2,19 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { PaymentMethod } from './../model/payment-method.model';
+import { PaymentMethod } from '../model/payment-method.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MerchantMethodsService {
+export class MarchandMethodsService {
 
-  private baseUrl = 'http://localhost:8085/merchant'; 
+  private baseUrl = 'http://localhost:8085/marchand'; 
 
   constructor(private http: HttpClient) {}
 
-  getMerchantPaymentMethods(merchantId: number): Observable<PaymentMethod[]> {
-    return this.http.get<PaymentMethod[]>(`${this.baseUrl}/methods/${merchantId}`).pipe(
+  getMarchandPaymentMethods(marchandId: number): Observable<PaymentMethod[]> {
+    return this.http.get<PaymentMethod[]>(`${this.baseUrl}/methods/${marchandId}`).pipe(
       catchError(this.handleError)
     );
   }

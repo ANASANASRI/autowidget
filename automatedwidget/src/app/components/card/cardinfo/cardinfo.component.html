@@ -8,9 +8,9 @@
                         
             <div class="delantera">
                 <div class="logo-marca" id="logo-marca"></div>
-    
+
                 <img src="https://i.ibb.co/KN9KXG2/chip-tarjeta.png" class="chip" />
-    
+
                 <div class="datos">
                     <div class="groupe">
                         <p  *ngIf="cardNumber !== '' "
@@ -26,12 +26,12 @@
                         <div class="groupe">
                             <p class="label" >Titulaire de la carte                        </p>
                             <p *ngIf=" cardName !== '' "
-                               class="name"  
-                               id="name"> {{ cardName | uppercase  }} 
+                                class="name"  
+                                id="name"> {{ cardName | uppercase  }} 
                             </p>
                             <p *ngIf=" cardName == '' "
-                               class="name"  
-                               id="name"> Anas anasri 
+                                class="name"  
+                                id="name"> Anas anasri 
                             </p>
                         </div>
                         <div class="groupe" id="expiracion">
@@ -83,14 +83,14 @@
             <div class="groupe">
                 <label for="inputname">Titulaire de la carte </label>
                 <input type="text" 
-                       id="inputname" 
-                       name="cardName"
-                       pattern="/!?^[a-zA-Z\d][a-zA-Z]*$/igm"
-                       [(ngModel)]= " cardName "
-                       maxlength="24"
-                       autocomplete="off"
-                       (click)="rellenarRecto()"
-                       required>
+                        id="inputname" 
+                        name="cardName"
+                        pattern="/!?^[a-zA-Z\d][a-zA-Z]*$/igm"
+                        [(ngModel)]= " cardName "
+                        maxlength="24"
+                        autocomplete="off"
+                        (click)="rellenarRecto()"
+                        required>
             </div>
     
             <div class="flexbox">
@@ -125,17 +125,17 @@
                 <div class="groupe ccv">
                     <label for="inputCCV">CVV</label>
                     <input type="text" 
-                           id="inputCCV"
-                           name="inputCCV"
-                           [(ngModel)]=" cvv "
-                           placeholder=" "
-                           maxlength="3" 
-                           autocomplete="off"
-                           (click)="rellenarCVV()"
-                           required>
+                        id="inputCCV"
+                        name="inputCCV"
+                        [(ngModel)]=" cvv "
+                        placeholder=" "
+                        maxlength="3" 
+                        autocomplete="off"
+                        (click)="rellenarCVV()"
+                        required>
                 </div>
             </div>
- 
+
             <div class="d-grid gap-2 mt-2 flex justify-end">
                 <button mat-button matStepperNext [disabled]="formuler.invalid"
                 type="button" 
@@ -147,9 +147,9 @@
             <!-- <div class="flex justify-end mt-80">
                 <button mat-button matStepperNext [disabled]="formuler.invalid" type="button" 
                 type="button" class="hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded">
-                  Payer
+                Payer
                 </button>
-              </div>  -->
+            </div>  -->
             
             </div>
         </form>

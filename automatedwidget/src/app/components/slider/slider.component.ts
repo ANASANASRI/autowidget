@@ -1,6 +1,6 @@
-import { Merchant } from './../../model/merchant.model';
+import { Marchand } from './../../model/marchand.model';
 import { PaymentMethod } from './../../model/payment-method.model'; // Import PaymentMethod
-import { MerchantMethodsService } from '../../service/merchant-methods.service'; // Import your service
+import { MarchandMethodsService } from '../../service/marchand-methods.service'; // Import your service
 import { AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
 import { SlideConfig } from '../../model/slide-config.model';
 import { DataService } from '../../service/data.service';
@@ -13,22 +13,22 @@ import { DataService } from '../../service/data.service';
 })
 export class SliderComponent implements OnInit, AfterViewInit {
 
-  merchantId: number | undefined;
+  marchandId: number | undefined;
 
-  constructor(private dataService: DataService,private merchantMethodsService: MerchantMethodsService) {} 
+  constructor(private dataService: DataService,private marchandMethodsService: MarchandMethodsService) {} 
   ngOnInit(): void {
-    // this.dataService.merchantId$.subscribe(merchantId => {
-    //   console.log('Merchant ID from DataService:*****', merchantId); // Log merchantId value from DataService
-    //   this.merchantId = merchantId;
-    //   this.getMerchantPaymentMethods();
+    // this.dataService.marchandId$.subscribe(marchandId => {
+    //   console.log('Marchand ID from DataService:*****', marchandId); // Log marchandId value from DataService
+    //   this.marchandId = marchandId;
+    //   this.getMarchandPaymentMethods();
     // });
   }
   
   ngAfterViewInit(): void {
-    this.dataService.merchantId$.subscribe(merchantId => {
-      console.log('Merchant ID from DataService ***************:', merchantId); // Log merchantId value from DataService
-      this.merchantId = merchantId;
-      this.getMerchantPaymentMethods();
+    this.dataService.marchandId$.subscribe(marchandId => {
+      console.log('Marchand ID from DataService ***************:', marchandId); // Log marchandId value from DataService
+      this.marchandId = marchandId;
+      this.getMarchandPaymentMethods();
     });
   }
   selectedItemIndex: number = -1;
@@ -37,9 +37,9 @@ export class SliderComponent implements OnInit, AfterViewInit {
   items: PaymentMethod[] = [];
 
   
-  // getMerchantPaymentMethods(): void {
-  //   if (this.merchantId !== undefined) {
-  //   this.merchantMethodsService.getMerchantPaymentMethods(this.merchantId)
+  // getMarchandPaymentMethods(): void {
+  //   if (this.marchandId !== undefined) {
+  //   this.marchandMethodsService.getMarchandPaymentMethods(this.marchandId)
   //     .subscribe(
   //       (paymentMethods: PaymentMethod[]) => {
   //         this.items = paymentMethods;
@@ -48,8 +48,8 @@ export class SliderComponent implements OnInit, AfterViewInit {
   //       }
   //     );}
   // }
-  getMerchantPaymentMethods(): void {
-    this.merchantMethodsService.getMerchantPaymentMethods(7)
+  getMarchandPaymentMethods(): void {
+    this.marchandMethodsService.getMarchandPaymentMethods(7)
       .subscribe(
         (paymentMethods: PaymentMethod[]) => {
           this.items = paymentMethods;

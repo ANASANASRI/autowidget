@@ -7,15 +7,15 @@ import { DataService } from '../../service/data.service'; // Import DataService
   styleUrls: ['./test.component.css']
 })
 export class TestComponent implements OnInit {
-  merchantId: number | undefined;
+  marchandId: number | undefined;
 
   constructor(private dataService: DataService) { } // Inject DataService into TestComponent
 
   ngOnInit(): void {
-    this.dataService.merchantId$.subscribe(merchantId => {
-      console.log('Merchant ID from DataService:', merchantId); // Log merchantId value from DataService
-      this.merchantId = merchantId;
-      // You can perform calculations here with the updated merchantId
+    this.dataService.marchandId$.subscribe(marchandId => {
+      console.log('Marchand ID from DataService:', marchandId); // Log marchandId value from DataService
+      this.marchandId = marchandId;
+      // You can perform calculations here with the updated marchandId
     });
   }
 }

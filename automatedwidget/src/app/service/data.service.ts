@@ -7,13 +7,13 @@ import { BehaviorSubject } from 'rxjs';
 export class DataService {
   accessKey: string | undefined;
   host: string | undefined;
-  merchantId: number | undefined;
+  marchandId: number | undefined;
   orderId: string | undefined;
   amount: number | undefined;
   currency: string | undefined;
   hmac: string | undefined;
 
-  private _merchantId: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
+  private _marchandId: BehaviorSubject<number | undefined> = new BehaviorSubject<number | undefined>(undefined);
   private _accessKey: BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>(undefined);
   private _host: BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>(undefined);
   private _orderId: BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>(undefined);
@@ -21,7 +21,7 @@ export class DataService {
   private _currency: BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>(undefined);
   private _hmac: BehaviorSubject<string | undefined> = new BehaviorSubject<string | undefined>(undefined);
 
-  merchantId$ = this._merchantId.asObservable();
+  marchandId$ = this._marchandId.asObservable();
   accessKey$ = this._accessKey.asObservable();
   host$ = this._host.asObservable();
   orderId$ = this._orderId.asObservable();
@@ -31,8 +31,8 @@ export class DataService {
 
   constructor() { }
 
-  setMerchantId(merchantId: number | undefined) {
-    this._merchantId.next(merchantId);
+  setMarchandId(marchandId: number | undefined) {
+    this._marchandId.next(marchandId);
   }  
  
 
