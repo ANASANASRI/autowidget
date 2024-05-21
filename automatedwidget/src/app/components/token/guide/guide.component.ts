@@ -26,6 +26,7 @@ export class GuideComponent {
 
     
     downloadPdf() {
+      
       const content = this.content.nativeElement;
       const sectionToExclude = this.sectionToExclude.nativeElement;
     
