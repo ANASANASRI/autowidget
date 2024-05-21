@@ -25,5 +25,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: automatedwidget/dist/browser
-          branch: prod  
+          branch: prod
           token: ${{ secrets.GH_TOKEN }}
