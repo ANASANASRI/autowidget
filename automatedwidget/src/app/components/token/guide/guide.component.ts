@@ -68,7 +68,7 @@ export class GuideComponent {
     
             // Add content image with padding
             pdf.addImage(imgData, 'PNG', 0, paddingTop, imgWidth, imgHeight);
-            pdf.save('content.pdf');
+            pdf.save('token.pdf');
 
             // // Show the section again after generating the PDF
             // sectionToExclude.style.display = 'block';
