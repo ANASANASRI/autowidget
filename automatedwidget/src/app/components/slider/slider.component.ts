@@ -1,7 +1,7 @@
 import { Marchand } from './../../model/marchand.model';
 import { PaymentMethod } from './../../model/payment-method.model'; // Import PaymentMethod
 import { MarchandMethodsService } from '../../service/marchand-methods.service'; // Import your service
-import { AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, TemplateRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, ElementRef, EventEmitter, HostListener, Input, OnInit, Output, Renderer2, TemplateRef, ViewChild } from '@angular/core';
 import { SlideConfig } from '../../model/slide-config.model';
 import { DataService } from '../../service/data.service';
 
@@ -30,6 +30,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
       this.marchandId = marchandId;
       this.getMarchandPaymentMethods();
     });
+
   }
   selectedItemIndex: number = -1;
 
@@ -194,6 +195,14 @@ prev() {
   handleOptionClick(index: number) {
     this.optionClicked.emit(this.items[index].paymentMethodId);
     this.selectedItemIndex = index;
+  }
+
+  ///////////////////////// details token 
+
+  Visible: boolean = false;
+
+  toggle() {
+    this.Visible = !this.Visible;
   }
 
 }
