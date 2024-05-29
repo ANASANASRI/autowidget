@@ -1,1 +1,19 @@
-<p>paydirect works!</p>
+<mat-horizontal-stepper labelPosition="bottom" [linear]="true" #stepper>
+
+    <mat-step label="Paiement par carte" [editable]="false">
+    
+        <app-paydirectinfo></app-paydirectinfo>
+    
+    </mat-step>
+
+
+    <mat-step label="done"  >
+    <app-card-congrat></app-card-congrat>      
+    <div class="flex justify-end">
+        <button mat-button  routerLink="<app-home/>" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">
+        Done
+        </button>
+    </div>
+    </mat-step>
+    
+</mat-horizontal-stepper>

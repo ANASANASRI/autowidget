@@ -28,6 +28,7 @@ import { TestComponent } from './components/test/test.component';
 import { AmantyComponent } from './components/amanty/amanty.component';
 import { PaydirectComponent } from './components/paydirect/paydirect.component';
 import { CardCongratComponent } from './components/card/card-congrat/card-congrat.component';
+import { PaydirectinfoComponent } from './components/paydirect/paydirectinfo/paydirectinfo.component';
 
 
 
@@ -53,6 +54,7 @@ import { CardCongratComponent } from './components/card/card-congrat/card-congra
     AmantyComponent,
     PaydirectComponent,
     CardCongratComponent,
+    PaydirectinfoComponent,
   ],
   imports: [
     BrowserModule,
