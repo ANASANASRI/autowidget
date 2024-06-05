@@ -52,7 +52,7 @@ export class StepsComponent implements OnInit {
         console.log('Token:', token); 
       },
       error => {
-        // Handle error response
+        console.log('token error'); 
       }
     );
   }

@@ -10,7 +10,7 @@ export class TokenService {
 
   constructor(private http: HttpClient) {}
 
-  generateToken(orderId: string, orderAmount: string, customerMail: string, customerName: string) {
+  generateToken(orderId: string, orderAmount: string, customerName: string, customerMail: string) {
     const url = `${this.baseUrl}/generate-token`;
     const params = {
       orderId: orderId,
