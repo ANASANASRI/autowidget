@@ -1,8 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'; 
 import { DataService } from '../../../service/data.service';
 import { TokenService } from '../../../service/token.service';
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -45,30 +44,18 @@ export class StepsComponent implements OnInit {
   generateToken() {
     const name = this.nameForm.get('firstName')?.value || ''; // Get name from form
     const email = this.emailForm.get('email')?.value || ''; // Get email from form
-    console.log('asddsd'),
-    console.log( name ,'//', email),
-    console.log( this.dataService.orderId$ ,'//', this.dataService.amount$),
-    this.dataService.orderId$.subscribe(orderId => {
-      if (orderId) {
-        this.dataService.amount$.subscribe(orderAmount => {
-          if (orderAmount) {
-
-            this.tokenService.generateToken(orderId.toString(), orderAmount.toString(), name, email).subscribe(
-              token => {
-                console.log('Token:', token); 
-              },
-              error => {
-                console.log('token error response')
-              }
-            );
-          } else {
-            console.log('undefined orderAmount')
-          }
-        });
-      } else {
-        console.log('undefined orderId')
+    const orderId = this.dataService.orderId || ''; // Get orderId from DataService
+    const orderAmount = this.dataService.amount || ''; // Get orderAmount from DataService
+  
+    this.tokenService.generateToken(orderId, orderAmount.toString(), name, email).subscribe(
+      token => {
+        console.log('Token:', token); 
+      },
+      error => {
+        // Handle error response
       }
-    });
+    );
   }
   
+
 }
