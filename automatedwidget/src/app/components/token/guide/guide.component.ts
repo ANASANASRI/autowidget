@@ -85,17 +85,20 @@ export class GuideComponent {
   isCopied: boolean = false;
 
   copyNumber() {
-    const numberText = this.receivedToken;
-    navigator.clipboard.writeText(numberText).then(() => {
-      console.log('Number copied to clipboard');
-      this.isCopied = true;
+    const numberSpan = document.querySelector('span#number') as HTMLSpanElement;
   
-      setTimeout(() => {
-        this.isCopied = false;
-      }, 2200);
-    }).catch(err => {
-      console.error('Failed to copy: ', err);
-    });
+    if (numberSpan) {
+      navigator.clipboard.writeText(numberSpan.textContent || '')
+        .then(() => {
+          this.isCopied = true;
+          setTimeout(() => {
+            this.isCopied = false;
+          }, 2000);
+        })
+        .catch((error) => {
+          console.error('Unable to copy:', error);
+        });
+    }
   }
   
 
