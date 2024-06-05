@@ -85,17 +85,35 @@ export class GuideComponent {
   isCopied: boolean = false;
 
   copyNumber() {
-    const numberText = this.numberElement.nativeElement.textContent;
-    navigator.clipboard.writeText(numberText).then(() => {
-      console.log('Number copied to clipboard');
-      this.isCopied = true;
-
-      
+    // Select the span element containing the number
+    const numberSpan = document.querySelector('span#number') as HTMLSpanElement;
+  
+    // Check if the span element exists
+    if (numberSpan) {
+      // Create a range object
+      const range = document.createRange();
+      // Select the contents of the span element
+      range.selectNode(numberSpan);
+      // Add the range to the current selection
+      window.getSelection()?.addRange(range);
+  
+      try {
+        // Execute the copy command
+        document.execCommand('copy');
+        // Set isCopied to true to indicate successful copy
+        this.isCopied = true;
+      } catch (err) {
+        console.error('Unable to copy:', err);
+      }
+  
+      // Remove the range from the selection
+      window.getSelection()?.removeAllRanges();
+  
+      // Reset isCopied after a certain duration
       setTimeout(() => {
         this.isCopied = false;
-      }, 2200);
-    }).catch(err => {
-      console.error('Failed to copy: ', err);
-    });
+      }, 2000); // 2 seconds
+    }
   }
+  
 }
