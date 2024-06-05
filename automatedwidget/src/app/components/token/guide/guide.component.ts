@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, Renderer2, ViewChild } from '@angular/core';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
@@ -11,6 +11,8 @@ export class GuideComponent {
   @ViewChild('content') content!: ElementRef;
   @ViewChild('sectionToExclude') sectionToExclude!: ElementRef;
   @Input() receivedToken!: string;
+
+  constructor(private renderer: Renderer2, private el: ElementRef) {}
 
 
     // Pdf downloading
@@ -84,42 +86,34 @@ export class GuideComponent {
     @ViewChild('number', { static: false }) numberElement!: ElementRef;
   isCopied: boolean = false;
 
+  
   copyNumber() {
-    const numberSpan = document.querySelector('span#number') as HTMLSpanElement;
-  
-    if (numberSpan) {
-      // Create a temporary textarea element
-      const tempTextArea = document.createElement('textarea');
-      // Set the value of the textarea to the text content of the span
-      tempTextArea.value = numberSpan.textContent || '';
-      // Set the position of the textarea to be off-screen
-      tempTextArea.style.position = 'fixed';
-      tempTextArea.style.top = '0';
-      tempTextArea.style.left = '0';
-      tempTextArea.style.opacity = '0';
-      // Append the textarea to the DOM
-      document.body.appendChild(tempTextArea);
-      // Focus and select the text in the textarea
-      tempTextArea.focus();
-      tempTextArea.select();
-  
-      try {
-        // Execute the copy command
-        const successful = document.execCommand('copy');
-        if (successful) {
-          this.isCopied = true;
-          setTimeout(() => {
-            this.isCopied = false;
-          }, 2000);
-        } else {
-          console.error('Unable to copy');
-        }
-      } catch (err) {
-        console.error('Unable to copy:', err);
-      }
-  
-      // Remove the textarea from the DOM
-      document.body.removeChild(tempTextArea);
+    // Create a text node with the value of receivedToken
+    const textNode = this.renderer.createText(this.receivedToken || '');
+    // Append the text node to the component's native element
+    this.renderer.appendChild(this.el.nativeElement, textNode);
+
+    try {
+      // Select the text
+      const range = document.createRange();
+      range.selectNode(textNode);
+      window.getSelection()?.removeAllRanges();
+      window.getSelection()?.addRange(range);
+      
+      // Copy the selected text
+      document.execCommand('copy');
+      
+      // Reset isCopied after a certain duration
+      this.isCopied = true;
+      setTimeout(() => {
+        this.isCopied = false;
+      }, 2000); // 2 seconds
+
+      // Clean up: remove the text node and clear the selection
+      window.getSelection()?.removeAllRanges();
+      this.renderer.removeChild(this.el.nativeElement, textNode);
+    } catch (err) {
+      console.error('Unable to copy:', err);
     }
   }
   
