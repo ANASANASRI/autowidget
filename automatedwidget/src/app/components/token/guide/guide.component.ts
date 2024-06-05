@@ -88,18 +88,41 @@ export class GuideComponent {
     const numberSpan = document.querySelector('span#number') as HTMLSpanElement;
   
     if (numberSpan) {
-      navigator.clipboard.writeText(numberSpan.textContent || '')
-        .then(() => {
+      // Create a temporary textarea element
+      const tempTextArea = document.createElement('textarea');
+      // Set the value of the textarea to the text content of the span
+      tempTextArea.value = numberSpan.textContent || '';
+      // Set the position of the textarea to be off-screen
+      tempTextArea.style.position = 'fixed';
+      tempTextArea.style.top = '0';
+      tempTextArea.style.left = '0';
+      tempTextArea.style.opacity = '0';
+      // Append the textarea to the DOM
+      document.body.appendChild(tempTextArea);
+      // Focus and select the text in the textarea
+      tempTextArea.focus();
+      tempTextArea.select();
+  
+      try {
+        // Execute the copy command
+        const successful = document.execCommand('copy');
+        if (successful) {
           this.isCopied = true;
           setTimeout(() => {
             this.isCopied = false;
           }, 2000);
-        })
-        .catch((error) => {
-          console.error('Unable to copy:', error);
-        });
+        } else {
+          console.error('Unable to copy');
+        }
+      } catch (err) {
+        console.error('Unable to copy:', err);
+      }
+  
+      // Remove the textarea from the DOM
+      document.body.removeChild(tempTextArea);
     }
   }
+  
   
 
 }
