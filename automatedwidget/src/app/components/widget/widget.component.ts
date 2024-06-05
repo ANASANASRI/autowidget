@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-widget',
   templateUrl: './widget.component.html',
-  styleUrl: './widget.component.css'
+  styleUrls: ['./widget.component.css']
 })
 export class WidgetComponent {
 
@@ -13,18 +12,15 @@ export class WidgetComponent {
   handleOptionClicked(index: number) {
     console.log('Index of clicked option:', index);
     this.selectedOptionIndex = index;
-    console.log('selected',this.selectedOptionIndex);
+    console.log('selected', this.selectedOptionIndex);
   }
 
   ////////////////////////////redirect close button//////////////////////////////////
 
-  // redirectUrl: string = "https://anasanasri.github.io/WidgetTest/";
-  redirectUrl: string = "file:///C:/Users/anasa/OneDrive/Desktop/testTheWidgetWt1/index.html";
-
-  constructor(private router: Router) {}
+  constructor() {}
 
   redirectToUrl() {
-    window.location.href = this.redirectUrl;
+    window.parent.postMessage('closeWidget', '*');
   }
 
   ////////////////////////////enable move widget////////////////////////////////
