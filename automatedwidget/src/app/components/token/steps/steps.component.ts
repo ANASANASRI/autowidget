@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms'; 
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatStepperModule} from '@angular/material/stepper';
-import {MatButtonModule} from '@angular/material/button';
+import { DataService } from '../../../service/data.service';
+import { TokenService } from '../../../service/token.service';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-steps',
@@ -11,14 +11,14 @@ import {MatButtonModule} from '@angular/material/button';
   styleUrls: ['./steps.component.css'] 
 })
 export class StepsComponent implements OnInit {
-
   nameForm: FormGroup | any; 
-  emailForm: FormGroup| any; 
+  emailForm: FormGroup | any; 
+  isNameEditable: boolean = true;
 
-  constructor(private _formBuilder: FormBuilder) { } 
+  constructor(private _formBuilder: FormBuilder,private tokenService: TokenService,public dataService: DataService) {}
 
   ngOnInit() {
-    this.initializeForms(); 
+    this.initializeForms();
   }
 
   initializeForms() {
@@ -29,23 +29,45 @@ export class StepsComponent implements OnInit {
 
     // Initialize email form with validation
     this.emailForm = this._formBuilder.group({
-      email: ['', [Validators.required, Validators.email]] 
+      email: ['', [Validators.required, Validators.email]]
     });
   }
 
-  ////////
-  isNameEditable: boolean = true;
-
-  // makeNameEditable() {
-  // this.isNameEditable = true;
-  // }
   makeNameNoEditable() {
     this.isNameEditable = false;
   }
 
-
-  ///////////////
   reloadPage() {
     window.location.reload();
   }
+
+
+  generateToken() {
+    const name = this.nameForm.get('firstName')?.value || ''; // Get name from form
+    const email = this.emailForm.get('email')?.value || ''; // Get email from form
+    
+    this.dataService.orderId$.subscribe(orderId => {
+      if (orderId) {
+        this.dataService.amount$.subscribe(orderAmount => {
+          if (orderAmount) {
+
+            this.tokenService.generateToken(orderId, orderAmount.toString(), name, email).subscribe(
+              token => {
+                console.log('Token:', token); 
+                //this.tokenGenerated.emit(token); // Emit the token here
+              },
+              error => {
+                console.log('token error response')
+              }
+            );
+          } else {
+            console.log('undefined orderAmount')
+          }
+        });
+      } else {
+        console.log('undefined orderId')
+      }
+    });
+  }
+  
 }

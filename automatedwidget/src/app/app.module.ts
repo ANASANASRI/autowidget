@@ -29,6 +29,7 @@ import { AmantyComponent } from './components/amanty/amanty.component';
 import { PaydirectComponent } from './components/paydirect/paydirect.component';
 import { CardCongratComponent } from './components/card/card-congrat/card-congrat.component';
 import { PaydirectinfoComponent } from './components/paydirect/paydirectinfo/paydirectinfo.component';
+import { TokenService } from './service/token.service';
 
 
 
@@ -67,7 +68,8 @@ import { PaydirectinfoComponent } from './components/paydirect/paydirectinfo/pay
   ],
   providers: [
     provideAnimationsAsync('noop'),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    TokenService
   ],
   bootstrap: [AppComponent],
 })
