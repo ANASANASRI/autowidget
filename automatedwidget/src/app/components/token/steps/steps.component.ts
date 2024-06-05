@@ -45,13 +45,13 @@ export class StepsComponent implements OnInit {
   generateToken() {
     const name = this.nameForm.get('firstName')?.value || ''; // Get name from form
     const email = this.emailForm.get('email')?.value || ''; // Get email from form
-    
+    console.log( this.dataService.orderId$ ,'//', this.dataService.amount$)
     this.dataService.orderId$.subscribe(orderId => {
       if (orderId) {
         this.dataService.amount$.subscribe(orderAmount => {
           if (orderAmount) {
 
-            this.tokenService.generateToken(orderId, orderAmount.toString(), name, email).subscribe(
+            this.tokenService.generateToken(orderId.toString(), orderAmount.toString(), name, email).subscribe(
               token => {
                 console.log('Token:', token); 
                 //this.tokenGenerated.emit(token); // Emit the token here
