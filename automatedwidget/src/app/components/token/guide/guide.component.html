@@ -14,7 +14,7 @@
         <!-- ///// -->
         <div class="flex mt-2 items-center justify-between text-gray-800 border border-gray-800 bg-white max-w-sm font-mono text-sm py-2 px-4 w-[250px] rounded-md mb-2">
           <div class="flex gap-1">
-            <span #number>021030149</span>
+            <span #number>{{receivedToken}}</span>
           </div>
           <span class="flex text-gray-800 cursor-pointer w-5 h-5 hover:text-gray-400 duration-200" (click)="copyNumber()">
             <svg *ngIf="!isCopied" class="fill-current" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 115.77 122.88" style="enable-background:new 0 0 115.77 122.88" xml:space="preserve">

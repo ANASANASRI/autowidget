@@ -13,6 +13,7 @@ export class StepsComponent implements OnInit {
   nameForm: FormGroup | any; 
   emailForm: FormGroup | any; 
   isNameEditable: boolean = true;
+  token!: string;
 
   constructor(private _formBuilder: FormBuilder,private tokenService: TokenService,public dataService: DataService) {}
 
@@ -49,6 +50,7 @@ export class StepsComponent implements OnInit {
   
     this.tokenService.generateToken(orderId, orderAmount.toString(), name, email).subscribe(
       token => {
+        this.token=token,
         console.log('Token:', token); 
       },
       error => {

@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
@@ -10,7 +10,7 @@ import jsPDF from 'jspdf';
 export class GuideComponent {
   @ViewChild('content') content!: ElementRef;
   @ViewChild('sectionToExclude') sectionToExclude!: ElementRef;
-
+  @Input() receivedToken!: string;
 
 
     // Pdf downloading
