@@ -10,6 +10,7 @@ import { TokenService } from '../../../service/token.service';
   styleUrls: ['./steps.component.css'] 
 })
 export class StepsComponent implements OnInit {
+
   nameForm: FormGroup | any; 
   emailForm: FormGroup | any; 
   isNameEditable: boolean = true;
@@ -47,8 +48,11 @@ export class StepsComponent implements OnInit {
     const email = this.emailForm.get('email')?.value || ''; // Get email from form
     const orderId = this.dataService.orderId || ''; // Get orderId from DataService
     const orderAmount = this.dataService.amount || ''; // Get orderAmount from DataService
-  
-    this.tokenService.generateToken(orderId, orderAmount.toString(), name, email).subscribe(
+    const currency = this.dataService.currency || ''; // Get currency from DataService
+    const marchandId = this.dataService.marchandId || ''; // Get marchandId from DataService
+
+
+    this.tokenService.generateToken(orderId, orderAmount.toString(), name, email, currency, marchandId.toString()).subscribe(
       token => {
         this.token=token,
         console.log('Token:', token); 
