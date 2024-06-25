@@ -1,28 +1,28 @@
 <mat-stepper labelPosition="bottom" [linear]="true" #stepper>
 
-    <mat-step [stepControl]="nameForm" label="Enter your name" [editable]="isNameEditable">
+    <mat-step [stepControl]="nameForm" label="Entrez votre nom, prénom" [editable]="isNameEditable">
       <form [formGroup]="nameForm">
         <div class="relative z-0 w-full mb-8 group mt-3">
           <input type="text" formControlName="firstName" id="floating_first_name" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-500 peer" placeholder=" " required />
-          <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-emerald-500 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First name</label>
+          <label for="floating_first_name" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-emerald-500 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nom, Prénom</label>
         </div>
         <div class="flex justify-end">
           <button mat-button [disabled]="!nameForm.valid" matStepperNext class="bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded">
-            Next
+            Suivant
           </button>
         </div>
       </form>
     </mat-step>
   
-    <mat-step [stepControl]="emailForm" label="Enter your email" [editable]="isNameEditable">
+    <mat-step [stepControl]="emailForm" label="Entrez votre e-mail" [editable]="isNameEditable">
       <form [formGroup]="emailForm">
         <div class="relative z-0 w-full mb-8 group mt-3">
           <input type="email" formControlName="email" id="floating_email" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-emerald-500 focus:outline-none focus:ring-0 focus:border-emerald-500 peer" placeholder=" " required />
-          <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-emerald-500 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email address</label>
+          <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-emerald-500 peer-focus:dark:text-emerald-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Adresse E-mail</label>
         </div>
         <div class="flex justify-between">
           <button mat-button matStepperPrevious class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">
-            Back
+            Retour
           </button>
           <button mat-button (click)="generateToken()" (click)="makeNameNoEditable()" [disabled]="!emailForm.valid" matStepperNext class="bg-emerald-500 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded">
             Obtenir votre code commande
@@ -31,11 +31,11 @@
       </form>
     </mat-step>
   
-    <mat-step label="Get your token" [editable]="false">
+    <mat-step label="Obtenez votre jeton 'Token'" [editable]="false">
       <app-guide [receivedToken]="token"></app-guide>
       <div class="flex justify-end">
         <button mat-button (click)="reloadPage()" routerLink="<app-home/>" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded">
-          Done
+          Terminé
         </button>
       </div>
     </mat-step>
