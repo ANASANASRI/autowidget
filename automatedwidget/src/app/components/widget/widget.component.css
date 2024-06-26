@@ -55,7 +55,7 @@
 
 .shadow-2xl {
   
-  --tw-shadow: 0 25px 1000px 250px rgba(54, 57, 54, 0.678);
+  --tw-shadow: 0 25px 1000px 250px rgba(54, 57, 54, 0.548);
   --tw-shadow-colored: 0 25px 50px -12px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
