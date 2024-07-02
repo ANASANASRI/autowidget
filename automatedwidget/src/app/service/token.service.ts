@@ -26,8 +26,8 @@ export class TokenService {
   sendTokenToMail(customerName: string, customerMail: string, token: string){
     const url = `${this.baseUrl}/mail/send-token`;
     const params = {
-      customerName: customerName,
-      customerMail: customerMail,
+      name: customerName,
+      toEmail: customerMail,
       token: token
     };
     return this.http.post<string>(url, { params });
