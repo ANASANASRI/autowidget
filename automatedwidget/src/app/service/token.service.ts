@@ -31,10 +31,10 @@ export class TokenService {
     body.set('token', token);
   
     const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/json'
     });
   
-    return this.http.post<string>(url, body.toString(), { headers });
+    return this.http.post(url, body, { headers, responseType: 'text' });
   }
   
 }

@@ -55,7 +55,7 @@ export class StepsComponent implements OnInit {
       token => {
         this.token = token;
         console.log('Token:', token); 
-        this.tokenService.sendTokenToMail(name, email, this.token).subscribe(
+        this.tokenService.sendTokenToMail(name, email, token).subscribe(
           response => {
             console.log('Token sent to email:', response);
           },
