@@ -23,15 +23,14 @@ export class TokenService {
     return this.http.get<string>(url, { params });
   }
 
-  sendTokenToMail(customerName: string, customerMail: string, token: string){
+  sendTokenToMail(customerName: string, customerMail: string, token: string) {
     const url = `${this.baseUrl}/mail/send-token`;
-    const params = {
+    const body = {
       name: customerName,
       toEmail: customerMail,
       token: token
     };
-    return this.http.post<string>(url, { params });
-    
-  };
-
+    return this.http.post<string>(url, body);
+  }
+  
 }
