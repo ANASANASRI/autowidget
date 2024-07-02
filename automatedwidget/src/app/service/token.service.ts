@@ -6,12 +6,12 @@ import { Injectable } from '@angular/core';
 })
 export class TokenService {
 
-  private baseUrl = 'http://localhost:8085/token'; 
+  private baseUrl = 'http://localhost:8085'; 
 
   constructor(private http: HttpClient) {}
 
   generateToken(orderId: string, orderAmount: string, customerName: string, customerMail: string, currency: string, marchandId: string) {
-    const url = `${this.baseUrl}/generate-token`;
+    const url = `${this.baseUrl}/token/generate-token`;
     const params = {
       orderId: orderId,
       orderAmount: orderAmount,
@@ -24,7 +24,7 @@ export class TokenService {
   }
 
   sendTokenToMail(customerName: string, customerMail: string, token: string){
-    const url = `${this.baseUrl}/send-token`;
+    const url = `${this.baseUrl}/mail/send-token`;
     const params = {
       customerName: customerName,
       customerMail: customerMail,
