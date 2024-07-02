@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -24,13 +24,17 @@ export class TokenService {
   }
 
   sendTokenToMail(customerName: string, customerMail: string, token: string) {
-    const url = `${this.baseUrl}/mail/send-token`;
-    const body = {
-      name: customerName,
-      toEmail: customerMail,
-      token: token
-    };
-    return this.http.post<string>(url, body);
+    const url = `${this.baseUrl}/send-token`;
+    const body = new URLSearchParams();
+    body.set('name', customerName);
+    body.set('toEmail', customerMail);
+    body.set('token', token);
+  
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+  
+    return this.http.post<string>(url, body.toString(), { headers });
   }
   
 }
