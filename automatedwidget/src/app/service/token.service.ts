@@ -19,9 +19,19 @@ export class TokenService {
       customerName: customerName,
       currency: currency,
       marchandId: marchandId
-    };
-
+  };
     return this.http.get<string>(url, { params });
   }
+
+  sendTokenToMail(customerName: string, customerMail: string, token: string){
+    const url = `${this.baseUrl}/send-token`;
+    const params = {
+      customerName: customerName,
+      customerMail: customerMail,
+      token: token
+    };
+    return this.http.post<string>(url, { params });
+    
+  };
 
 }

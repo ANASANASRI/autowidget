@@ -51,16 +51,25 @@ export class StepsComponent implements OnInit {
     const currency = this.dataService.currency || ''; // Get currency from DataService
     const marchandId = this.dataService.marchandId || ''; // Get marchandId from DataService
 
-
     this.tokenService.generateToken(orderId, orderAmount.toString(), name, email, currency, marchandId.toString()).subscribe(
       token => {
-        this.token=token,
+        this.token = token;
         console.log('Token:', token); 
+        this.tokenService.sendTokenToMail(name, email, token).subscribe(
+          response => {
+            console.log('Token sent to email:', response);
+          },
+          emailError => {
+            console.log('Error sending token to email:', emailError);
+          }
+        );
       },
       error => {
-        console.log('token error'); 
+        this.token = "Unable-to-generate-token";
+        console.log('Token error:', error); 
       }
     );
+
   }
   
 
