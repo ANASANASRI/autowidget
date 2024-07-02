@@ -65,7 +65,7 @@ export class StepsComponent implements OnInit {
         );
       },
       error => {
-        this.token = "Unable-to-generate-token";
+        this.token = "problème-de-génération-du-token";
         console.log('Token error:', error); 
       }
     );

@@ -30,11 +30,7 @@ export class TokenService {
     body.set('toEmail', customerMail);
     body.set('token', token);
   
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/x-www-form-urlencoded'
-    });
-  
-    return this.http.post<string>(url, body.toString(), { headers });
+    return this.http.post<string>(url, body.toString());
   }
   
 }
