@@ -24,7 +24,7 @@ export class TokenService {
   }
 
   sendTokenToMail(customerName: string, customerMail: string, token: string) {
-    const url = `${this.baseUrl}/send-token`;
+    const url = `${this.baseUrl}/mail/send-token`;
     const body = new URLSearchParams();
     body.set('name', customerName);
     body.set('toEmail', customerMail);
