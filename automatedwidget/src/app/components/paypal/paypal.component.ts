@@ -1,5 +1,6 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { DataService } from '../../service/data.service';
 
 declare var paypal: any; // Declare PayPal variable
 
@@ -10,8 +11,12 @@ declare var paypal: any; // Declare PayPal variable
 })
 export class PaypalComponent implements AfterViewInit {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,public dataService: DataService) { }
 
+  orderAmount = this.dataService.amount || ''; // Get orderAmount from DataService
+  currency = this.dataService.currency || ''; // Get currency from DataService
+    
+  
   ngAfterViewInit(): void {
     this.loadPayPalScript().then(() => {
       this.renderPayPalButton();
@@ -36,6 +41,12 @@ export class PaypalComponent implements AfterViewInit {
   }
 
   renderPayPalButton(): void {
+
+    const orderId = this.dataService.orderId || ''; // Get orderId from DataService
+    const orderAmount = this.dataService.amount || ''; // Get orderAmount from DataService
+    const currency = this.dataService.currency || ''; // Get currency from DataService
+    const marchandId = this.dataService.marchandId || ''; // Get marchandId from DataService
+
     paypal.Buttons({
       style: {
         layout: 'horizontal',
@@ -45,9 +56,8 @@ export class PaypalComponent implements AfterViewInit {
       },
       createOrder: (data: any, actions: any) => {
         return this.http.post<any>('/demo/checkout/api/paypal/order/create/', {
-          amount: 1000.00, // Replace with the amount to be charged
-          currency: 'MAD', // Replace with the currency code
-          description: 'Purchase description' // Replace with the description
+          amount: orderAmount, 
+          currency: currency, 
         }).toPromise().then(order => {
           if (order && order.id) {
             return order.id;
