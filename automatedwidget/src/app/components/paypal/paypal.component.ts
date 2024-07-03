@@ -11,12 +11,18 @@ declare var paypal: any; // Declare PayPal variable
 })
 export class PaypalComponent implements AfterViewInit {
 
-  constructor(private http: HttpClient,public dataService: DataService) { }
+  orderAmount: string;
+  currency: string;
+  orderId: string;
+  marchandId: string;
 
-  orderAmount = this.dataService.amount || ''; // Get orderAmount from DataService
-  currency = this.dataService.currency || ''; // Get currency from DataService
-    
-  
+  constructor(private http: HttpClient, public dataService: DataService) { 
+    this.orderAmount = this.dataService.amount !== undefined ? String(this.dataService.amount) : ''; // Convert to string if not undefined
+    this.currency = this.dataService.currency !== undefined ? String(this.dataService.currency) : ''; // Convert to string if not undefined
+    this.orderId = this.dataService.orderId !== undefined ? String(this.dataService.orderId) : ''; // Convert to string if not undefined
+    this.marchandId = this.dataService.marchandId !== undefined ? String(this.dataService.marchandId) : ''; // Convert to string if not undefined
+  }
+
   ngAfterViewInit(): void {
     this.loadPayPalScript().then(() => {
       this.renderPayPalButton();
@@ -33,7 +39,7 @@ export class PaypalComponent implements AfterViewInit {
       }
       const script = document.createElement('script');
       script.id = 'paypal-sdk';
-      script.src = 'https://www.paypal.com/sdk/js?client-id=test&currency=USD';
+      script.src = 'https://www.paypal.com/sdk/js?currency=USDclient-id=AQWbAzK6sUy3815sNoGI1uIXZ5Nwr2eP_Vcj6H16As6s4z6ckYbPs-bXaRYDmDSUESAL-FwWOvWiBcAS';
       script.onload = () => resolve();
       script.onerror = () => reject(new Error('PayPal SDK script could not be loaded.'));
       document.body.appendChild(script);
@@ -41,12 +47,6 @@ export class PaypalComponent implements AfterViewInit {
   }
 
   renderPayPalButton(): void {
-
-    const orderId = this.dataService.orderId || ''; // Get orderId from DataService
-    const orderAmount = this.dataService.amount || ''; // Get orderAmount from DataService
-    const currency = this.dataService.currency || ''; // Get currency from DataService
-    const marchandId = this.dataService.marchandId || ''; // Get marchandId from DataService
-
     paypal.Buttons({
       style: {
         layout: 'horizontal',
@@ -56,8 +56,8 @@ export class PaypalComponent implements AfterViewInit {
       },
       createOrder: (data: any, actions: any) => {
         return this.http.post<any>('/demo/checkout/api/paypal/order/create/', {
-          amount: orderAmount, 
-          currency: currency, 
+          amount: this.orderAmount, 
+          currency: this.currency, 
         }).toPromise().then(order => {
           if (order && order.id) {
             return order.id;
