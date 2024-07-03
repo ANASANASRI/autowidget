@@ -39,7 +39,7 @@ export class PaypalComponent implements AfterViewInit {
       }
       const script = document.createElement('script');
       script.id = 'paypal-sdk';
-      script.src = 'https://www.paypal.com/sdk/js?currency=USDclient-id=AQWbAzK6sUy3815sNoGI1uIXZ5Nwr2eP_Vcj6H16As6s4z6ckYbPs-bXaRYDmDSUESAL-FwWOvWiBcAS';
+      script.src = 'https://www.paypal.com/sdk/js?client-id=AQWbAzK6sUy3815sNoGI1uIXZ5Nwr2eP_Vcj6H16As6s4z6ckYbPs-bXaRYDmDSUESAL-FwWOvWiBcAS&currency=USD';
       script.onload = () => resolve();
       script.onerror = () => reject(new Error('PayPal SDK script could not be loaded.'));
       document.body.appendChild(script);
