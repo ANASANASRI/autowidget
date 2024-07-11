@@ -65,7 +65,7 @@ export class StepsComponent implements OnInit {
         );
       },
       error => {
-        this.token = "problème-de-génération-du-token";
+        this.token = "problème-dans-le-serveur-oper-token";
         console.log('Token error:', error); 
       }
     );
